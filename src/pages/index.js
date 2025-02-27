@@ -1,8 +1,10 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import Layout from '../src/components/layout/Layout';
 import Hero from '../src/components/sections/Hero';
-import FeaturesSection from '../src/components/sections/FeaturesSection';
 import Button from '../src/components/ui/Button';
+
+const FeaturesSection = dynamic(() => import('../src/components/sections/FeaturesSection'), { ssr: false });
 
 export default function Home() {
   const features = [
