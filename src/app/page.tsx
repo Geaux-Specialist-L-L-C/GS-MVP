@@ -1,4 +1,7 @@
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const BelowTheFoldContent = dynamic(() => import("../components/BelowTheFoldContent"), { ssr: false });
 
 export default function Home() {
   return (
@@ -90,6 +93,8 @@ export default function Home() {
           </p>
         </a>
       </div>
+
+      <BelowTheFoldContent />
     </main>
   );
 }
