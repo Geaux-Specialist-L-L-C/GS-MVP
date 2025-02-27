@@ -1,12 +1,10 @@
-// Home page
 import React from 'react';
-import Layout from '../components/layout/Layout';
-import Hero from '../components/sections/Hero';
-import FeaturesSection from '../components/sections/FeaturesSection';
-import Button from '../components/ui/Button';
+import Layout from '../src/components/layout/Layout';
+import Hero from '../src/components/sections/Hero';
+import FeaturesSection from '../src/components/sections/FeaturesSection';
+import Button from '../src/components/ui/Button';
 
 export default function Home() {
-  // Sample features data
   const features = [
     {
       title: 'Geaux Academy',
