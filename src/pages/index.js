@@ -10,22 +10,22 @@ export default function Home() {
   const features = [
     {
       title: 'Geaux Academy',
-      description: 'Cutting-edge education platform offering specialized learning experiences.',
+      description: 'Personalized online learning solutions.',
       icon: '/images/geaux-academy-icon.svg',
     },
     {
       title: 'Geaux HelpED',
-      description: 'Healthcare management solutions designed to streamline patient care.',
+      description: 'Streamlined patient care and clinical operations.',
       icon: '/images/geaux-helped-icon.svg',
     },
     {
       title: 'ReanimatED Echos',
-      description: 'Advanced voice processing technology for the healthcare industry.',
+      description: 'Preserving voices through advanced AI.',
       icon: '/images/reanimated-echos-icon.svg',
     },
     {
       title: 'Geaux Emporium',
-      description: 'E-commerce platform specializing in educational resources and materials.',
+      description: 'Specialized healthcare educational resources and materials.',
       icon: '/images/geaux-emporium-icon.svg',
     },
   ];
