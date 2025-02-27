@@ -1,4 +1,3 @@
-// Geaux Emporium project page
 import React from 'react';
 import Layout from '../../components/layout/Layout';
 import Hero from '../../components/sections/Hero';
@@ -6,7 +5,6 @@ import FeaturesSection from '../../components/sections/FeaturesSection';
 import Button from '../../components/ui/Button';
 
 const GeauxEmporium = () => {
-  // Sample features data for Geaux Emporium
   const features = [
     {
       title: 'Curated Resources',
