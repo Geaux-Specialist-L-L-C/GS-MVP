@@ -1,0 +1,271 @@
+/* Section headers */
+.sectionHeader {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--black);
+}
+
+.sectionSubtitle {
+  font-size: 1.25rem;
+  color: var(--grey-medium);
+}
+
+/* About section */
+.aboutSection {
+  padding: var(--spacing-xxl) 0;
+}
+
+.twoColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.aboutContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.aboutText {
+  font-size: 1.1rem;
+  color: var(--grey-dark);
+  line-height: 1.7;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.statItem {
+  background-color: rgba(144, 205, 244, 0.1); /* Very light blue */
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  text-align: center;
+}
+
+.statFigure {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--grey-dark);
+  font-weight: 600;
+}
+
+.aboutImage {
+  position: relative;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-large);
+}
+
+.aboutImage::before {
+  content: '';
+  display: block;
+  padding-bottom: 120%; /* Aspect ratio */
+}
+
+.aboutImage .image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Projects section */
+.projectsSection {
+  background-color: #f7fafc; /* Very light blue */
+  padding: var(--spacing-xxl) 0;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.projectsCta {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+/* Testimonials section */
+.testimonialsSection {
+  padding: var(--spacing-xxl) 0;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.testimonialCard {
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-medium);
+  padding: var(--spacing-lg);
+  transition: transform var(--transition-medium);
+}
+
+.testimonialCard:hover {
+  transform: translateY(-5px);
+}
+
+.testimonialContent {
+  margin-bottom: var(--spacing-lg);
+}
+
+.testimonialText {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--grey-dark);
+  font-style: italic;
+  position: relative;
+}
+
+.testimonialText::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--primary-light);
+  position: absolute;
+  top: -2rem;
+  left: -1rem;
+  opacity: 0.3;
+  font-family: serif;
+}
+
+.testimonialAuthor {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.testimonialAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.testimonialAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonialInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonialName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.testimonialRole {
+  font-size: 0.9rem;
+  color: var(--grey-medium);
+  margin: 0;
+}
+
+/* CTA section */
+.ctaSection {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: white;
+  padding: var(--spacing-xxl) 0;
+  text-align: center;
+}
+
+.ctaContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.ctaTitle {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+  color: white;
+}
+
+.ctaText {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.9;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Media queries */
+@media (max-width: 1024px) {
+  .sectionTitle {
+    font-size: 2.25rem;
+  }
+  
+  .statFigure {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .twoColumns {
+    grid-template-columns: 1fr;
+  }
+  
+  .aboutImage {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .aboutImage::before {
+    padding-bottom: 75%; /* Adjust aspect ratio for mobile */
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .ctaTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+  }
+  
+  .ctaButtons a {
+    width: 100%;
+  }
+}

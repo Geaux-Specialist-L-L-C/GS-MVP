@@ -1,0 +1,364 @@
+/* Hero Section */
+.heroSection {
+  background-color: var(--primary-dark);
+  color: white;
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.heroTitle {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  color: white;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+/* Mission Section */
+.missionSection {
+  padding: var(--spacing-xxl) 0;
+}
+
+.missionContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.missionText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--black);
+}
+
+.sectionSubtitle {
+  font-size: 1.25rem;
+  color: var(--grey-medium);
+  max-width: 800px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.missionStatement {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  line-height: 1.4;
+  margin-bottom: var(--spacing-md);
+}
+
+.missionDescription {
+  font-size: 1.1rem;
+  color: var(--grey-dark);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-sm);
+}
+
+.missionImageContainer {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-large);
+}
+
+.missionImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Values Section */
+.valuesSection {
+  background-color: #f7fafc; /* Very light blue */
+  padding: var(--spacing-xxl) 0;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+.valueCard {
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  box-shadow: var(--shadow-medium);
+  text-align: center;
+  transition: transform var(--transition-medium);
+}
+
+.valueCard:hover {
+  transform: translateY(-5px);
+}
+
+.valueIcon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.valueTitle {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary);
+}
+
+.valueDescription {
+  color: var(--grey-dark);
+  line-height: 1.6;
+}
+
+/* Team Section */
+.teamSection {
+  padding: var(--spacing-xxl) 0;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+}
+
+.teamMember {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+  transition: transform var(--transition-medium);
+}
+
+.teamMember:hover {
+  transform: translateY(-5px);
+}
+
+.memberImageContainer {
+  height: 300px;
+  overflow: hidden;
+}
+
+.memberImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+}
+
+.teamMember:hover .memberImage {
+  transform: scale(1.05);
+}
+
+.memberInfo {
+  padding: var(--spacing-lg);
+}
+
+.memberName {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-xs);
+  color: var(--black);
+}
+
+.memberRole {
+  font-size: 1rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+}
+
+.memberBio {
+  color: var(--grey-dark);
+  line-height: 1.6;
+}
+
+/* Timeline Section */
+.timelineSection {
+  background-color: #f7fafc; /* Very light blue */
+  padding: var(--spacing-xxl) 0;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-xl) 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background-color: var(--primary);
+  transform: translateX(-50%);
+}
+
+.timelineEvent {
+  position: relative;
+  margin-bottom: var(--spacing-xl);
+  width: 50%;
+}
+
+.timelineLeft {
+  left: 0;
+  padding-right: var(--spacing-xl);
+}
+
+.timelineRight {
+  left: 50%;
+  padding-left: var(--spacing-xl);
+}
+
+.timelineMarker {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  border: 4px solid white;
+  top: 0;
+}
+
+.timelineLeft .timelineMarker {
+  right: calc(var(--spacing-xl) - 12px);
+}
+
+.timelineRight .timelineMarker {
+  left: calc(var(--spacing-xl) - 12px);
+}
+
+.timelineContent {
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-medium);
+}
+
+.timelineYear {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background-color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.timelineTitle {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--black);
+}
+
+.timelineDescription {
+  color: var(--grey-dark);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.ctaSection {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: white;
+  padding: var(--spacing-xxl) 0;
+  text-align: center;
+}
+
+.ctaContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.ctaTitle {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+  color: white;
+}
+
+.ctaText {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.9;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Media queries */
+@media (max-width: 1024px) {
+  .heroTitle, .sectionTitle, .ctaTitle {
+    font-size: 2.25rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.25rem;
+  }
+  
+  .missionStatement {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .missionContent {
+    grid-template-columns: 1fr;
+  }
+  
+  .timelineEvent {
+    width: 100%;
+    left: 0;
+    padding-left: var(--spacing-xl);
+    padding-right: 0;
+  }
+  
+  .timeline::before {
+    left: 24px;
+  }
+  
+  .timelineLeft .timelineMarker,
+  .timelineRight .timelineMarker {
+    left: 12px;
+  }
+  
+  .ctaButtons {
+    flex-direction: column;
+  }
+  
+  .ctaButtons a {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroTitle, .sectionTitle, .ctaTitle {
+    font-size: 2rem;
+  }
+  
+  .valuesGrid {
+    grid-template-columns: 1fr;
+  }
+}

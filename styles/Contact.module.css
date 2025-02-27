@@ -1,0 +1,266 @@
+/* Hero Section */
+.heroSection {
+  background-color: var(--primary-dark);
+  color: white;
+  padding: var(--spacing-xl) 0;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.heroTitle {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  color: white;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+/* Contact Form Section */
+.formSection {
+  padding: var(--spacing-xxl) 0;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--spacing-xl);
+  align-items: flex-start;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--black);
+}
+
+.sectionSubtitle {
+  font-size: 1.25rem;
+  color: var(--grey-medium);
+  max-width: 800px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.contactDescription {
+  font-size: 1.1rem;
+  color: var(--grey-dark);
+  line-height: 1.7;
+}
+
+.contactMethods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+}
+
+.contactMethod {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.contactIcon {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.contactMethodTitle {
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--primary-dark);
+}
+
+.contactMethodText {
+  margin: 0;
+}
+
+.contactMethodText a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.contactMethodText a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.socialLinks {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.socialLinks a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.socialLinks a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* Locations Section */
+.locationsSection {
+  background-color: #f7fafc; /* Very light blue */
+  padding: var(--spacing-xxl) 0;
+}
+
+.locationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+}
+
+.locationCard {
+  background-color: white;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
+}
+
+.locationName {
+  font-size: 1.5rem;
+  padding: var(--spacing-lg);
+  margin: 0;
+  background-color: var(--primary);
+  color: white;
+}
+
+.locationDetails {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.locationDetail {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.detailIcon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.detailText {
+  font-size: 1rem;
+  color: var(--grey-dark);
+}
+
+.locationMap {
+  height: 200px;
+  background-color: #f1f5f9;
+}
+
+.mapPlaceholder {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--grey-medium);
+  font-style: italic;
+}
+
+/* FAQ Section */
+.faqSection {
+  padding: var(--spacing-xxl) 0;
+}
+
+.faqContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--grey-light);
+  padding-bottom: var(--spacing-lg);
+}
+
+.faqQuestion {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--primary-dark);
+}
+
+.faqAnswer {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--grey-dark);
+}
+
+.faqCta {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+.faqCta p {
+  margin-bottom: var(--spacing-md);
+  color: var(--grey-dark);
+}
+
+/* Media queries */
+@media (max-width: 1024px) {
+  .heroTitle, .sectionTitle {
+    font-size: 2.25rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contactInfo {
+    order: 2;
+  }
+  
+  .contactFormContainer {
+    order: 1;
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .contactMethods {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .contactMethod {
+    flex: 1 0 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroTitle, .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .contactMethods {
+    flex-direction: column;
+  }
+}
