@@ -441,3 +441,17 @@ img {
 .main-content {
   flex: 1;
 }
+
+/* Form Validation Error Styles */
+.errorMessage {
+  color: var(--danger-color);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Form Success Message Styles */
+.successMessage {
+  color: var(--success-color);
+  font-size: 1rem;
+  margin-top: 1rem;
+}

@@ -1,8 +1,8 @@
-// Main Layout component that wraps all pages
 import React from 'react';
 import Head from 'next/head';
 import Navigation from './Navigation';
 import Footer from './Footer';
+import styles from '../../styles/Layout.module.css';
 
 const Layout = ({ children, title = 'Geaux Specialist', description = 'Innovative solutions across various domains' }) => {
   return (
@@ -27,9 +27,9 @@ const Layout = ({ children, title = 'Geaux Specialist', description = 'Innovativ
         <meta name="twitter:image" content="https://geauxspecialist.com/images/twitter-card.jpg" />
       </Head>
       
-      <div className="site-wrapper">
+      <div className={`site-wrapper ${styles.siteWrapper}`}>
         <Navigation />
-        <main>{children}</main>
+        <main className={styles.mainContent}>{children}</main>
         <Footer />
       </div>
     </>
