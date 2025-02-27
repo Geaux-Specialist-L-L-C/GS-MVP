@@ -14,10 +14,12 @@ const nextConfig = {
     minimumCacheTTL: 60,
   },
   eslint: {
-    dirs: ['pages', 'components', 'utils', 'styles'],
+    dirs: ['src/pages', 'src/components', 'src/utils', 'src/styles'],
   },
   poweredByHeader: false,
   compress: true,
+  // Explicitly define page extensions
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
   async headers() {
     return [
       {
