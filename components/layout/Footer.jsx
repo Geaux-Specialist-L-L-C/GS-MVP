@@ -1,50 +1,58 @@
-// Footer component for the website
 import React from 'react';
 import Link from 'next/link';
+import styles from '../../styles/Footer.module.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="site-footer">
-      <div className="container">
-        <div className="footer-grid">
-          <div className="footer-branding">
-            <h3>GeauxSpecialist</h3>
-            <p>Innovative solutions across education, healthcare, technology, and e-commerce.</p>
+    <footer className={styles.footer}>
+      <div className={styles.footerContainer}>
+        <div className={styles.footerTop}>
+          <div className={styles.footerInfo}>
+            <h3 className={styles.footerTitle}>Geaux Specialist LLC</h3>
+            <p>Empowering communities through technology and education.</p>
           </div>
           
-          <div className="footer-links">
-            <h4>Quick Links</h4>
-            <ul>
-              <li><Link href="/"><a>Home</a></Link></li>
-              <li><Link href="/about"><a>About</a></Link></li>
-              <li><Link href="/projects"><a>Projects</a></Link></li>
-              <li><Link href="/contact"><a>Contact</a></Link></li>
-            </ul>
-          </div>
-          
-          <div className="footer-projects">
-            <h4>Our Projects</h4>
-            <ul>
-              <li><Link href="/projects/geaux-academy"><a>Geaux Academy</a></Link></li>
-              <li><Link href="/projects/geaux-helped"><a>Geaux HelpED</a></Link></li>
-              <li><Link href="/projects/reanimated-echos"><a>ReanimatED Echos</a></Link></li>
-              <li><Link href="/projects/geaux-emporium"><a>Geaux Emporium</a></Link></li>
-            </ul>
-          </div>
-          
-          <div className="footer-contact">
-            <h4>Contact Us</h4>
-            <address>
-              <p>Email: <a href="mailto:contact@geauxspecialist.com">contact@geauxspecialist.com</a></p>
-              <p>Phone: (123) 456-7890</p>
-            </address>
+          <div className={styles.footerLinks}>
+            <div className={styles.footerLinkColumn}>
+              <h4>Navigate</h4>
+              <ul>
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/about">About</Link></li>
+                <li><Link href="/projects">Projects</Link></li>
+                <li><Link href="/contact">Contact</Link></li>
+              </ul>
+            </div>
+            
+            <div className={styles.footerLinkColumn}>
+              <h4>Projects</h4>
+              <ul>
+                <li><Link href="/projects/geaux-academy">Geaux Academy</Link></li>
+                <li><Link href="/projects/geaux-helped">Geaux HelpED</Link></li>
+                <li><Link href="/projects/reanimated-echos">ReanimatED Echos</Link></li>
+                <li><Link href="/projects/geaux-emporium">Geaux Emporium</Link></li>
+              </ul>
+            </div>
+            
+            <div className={styles.footerLinkColumn}>
+              <h4>Connect</h4>
+              <ul>
+                <li><a href="mailto:info@geauxspecialist.com">Email Us</a></li>
+                <li><a href="https://linkedin.com/company/geauxspecialist" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://twitter.com/geauxspecialist" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+                <li><a href="https://facebook.com/geauxspecialist" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+              </ul>
+            </div>
           </div>
         </div>
         
-        <div className="footer-bottom">
+        <div className={styles.footerBottom}>
           <p>&copy; {currentYear} Geaux Specialist LLC. All rights reserved.</p>
+          <div className={styles.footerLegal}>
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/terms-of-service">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>

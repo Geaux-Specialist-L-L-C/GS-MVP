@@ -1,26 +1,35 @@
 // Main Layout component that wraps all pages
 import React from 'react';
 import Head from 'next/head';
-import Header from './Header';
+import Navigation from './Navigation';
 import Footer from './Footer';
 
-const Layout = ({ children, title = 'GeauxSpecialist' }) => {
+const Layout = ({ children, title = 'Geaux Specialist', description = 'Innovative solutions across various domains' }) => {
   return (
     <>
       <Head>
-        <title>{title} | Innovative Solutions</title>
-        <meta name="description" content="GeauxSpecialist LLC - Innovative solutions across education, healthcare, technology, and e-commerce." />
+        <title>{title} | Geaux Specialist LLC</title>
+        <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        
+        {/* Open Graph / Social Media Meta Tags */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`${title} | Geaux Specialist LLC`} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content="https://geauxspecialist.com" />
+        <meta property="og:image" content="https://geauxspecialist.com/images/og-image.jpg" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${title} | Geaux Specialist LLC`} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content="https://geauxspecialist.com/images/twitter-card.jpg" />
       </Head>
       
       <div className="site-wrapper">
-        <Header />
-        
-        <main className="main-content">
-          {children}
-        </main>
-        
+        <Navigation />
+        <main>{children}</main>
         <Footer />
       </div>
     </>
