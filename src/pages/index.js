@@ -1,3 +1,4 @@
+<<<<<<< HEAD:pages/index.js
 import { useState } from 'react';
 import Head from 'next/head';
 import Layout from '../components/layout/Layout';
@@ -8,6 +9,18 @@ import styles from '../styles/Home.module.css';
 export default function Home() {
   // Featured projects data
   const featuredProjects = [
+=======
+import React from 'react';
+import dynamic from 'next/dynamic';
+import Layout from '../src/components/layout/Layout';
+import Hero from '../src/components/sections/Hero';
+import Button from '../src/components/ui/Button';
+
+const FeaturesSection = dynamic(() => import('../src/components/sections/FeaturesSection'), { ssr: false });
+
+export default function Home() {
+  const features = [
+>>>>>>> 3fd4ed4d7136f8021924c596fafda693338f93fd:src/pages/index.js
     {
       id: 1,
       title: 'Geaux Academy',

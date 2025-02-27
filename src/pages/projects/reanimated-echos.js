@@ -1,9 +1,10 @@
-// ReanimatED Echos project page
 import React from 'react';
 import Layout from '../../components/layout/Layout';
 import Hero from '../../components/sections/Hero';
-import FeaturesSection from '../../components/sections/FeaturesSection';
+import dynamic from 'next/dynamic';
 import Button from '../../components/ui/Button';
+
+const FeaturesSection = dynamic(() => import('../../components/sections/FeaturesSection'), { ssr: false });
 
 const ReanimatEDEchos = () => {
   // Sample features data for ReanimatED Echos
