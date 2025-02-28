@@ -10,11 +10,6 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Configure the plugin for static export
-[plugins.inputs]
-  # Use static export mode
-  staticExport = true
-
 [[redirects]]
   from = "/*"
   to = "/404.html"
