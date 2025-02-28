@@ -9,9 +9,9 @@
 # Use the Netlify Next.js plugin
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-  
+
 # Configure the plugin
-[plugins."@netlify/plugin-nextjs"]
+[plugins.inputs]
   # Disable runtime as we're doing static export
   useRuntime = false
 
