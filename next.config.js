@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  // Add these two lines to configure output for Netlify
+  output: 'export',
+  distDir: 'out',
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',
@@ -12,6 +15,7 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
+    unoptimized: true, // Add this for static export
   },
   eslint: {
     dirs: ['src/pages', 'src/components', 'src/utils', 'src/styles'],
