@@ -1,7 +1,8 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from '../../styles/TestimonialsSection.module.css';
 
-const TestimonialsSection = ({ title, subtitle, testimonials }) => {
+const TestimonialsSection = ({ title, subtitle, testimonials, showProjectsButton = false }) => {
   return (
     <section className={styles.testimonialSection}>
       <div className="container mx-auto px-4 py-16">
@@ -42,6 +43,16 @@ const TestimonialsSection = ({ title, subtitle, testimonials }) => {
             </div>
           ))}
         </div>
+        
+        {showProjectsButton && (
+          <div className="mt-12 flex justify-center">
+            <Link href="/projects">
+              <button className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+                Explore Our Projects
+              </button>
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
