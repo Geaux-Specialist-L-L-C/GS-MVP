@@ -2,20 +2,21 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // Add these two lines to configure output for Netlify
-  output: 'export',
-  distDir: 'out',
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
-  },
+  // For older Next.js versions, use these configs for static export
+  // (The 'output: export' is for Next.js 13.4+ only)
+  // distDir: 'out',
+  trailingSlash: true,
   images: {
     domains: ['localhost'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
-    unoptimized: true, // Add this for static export
+    unoptimized: true, // Required for static export
+  },
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
   },
   eslint: {
     dirs: ['src/pages', 'src/components', 'src/utils', 'src/styles'],
