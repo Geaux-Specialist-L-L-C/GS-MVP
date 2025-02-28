@@ -2,9 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // For older Next.js versions, use these configs for static export
-  // (The 'output: export' is for Next.js 13.4+ only)
-  // distDir: 'out',
+  // Using the modern export config for Next.js 13.4+
+  output: 'export',
   trailingSlash: true,
   images: {
     domains: ['localhost'],
@@ -14,10 +13,7 @@ const nextConfig = {
     minimumCacheTTL: 60,
     unoptimized: true, // Required for static export
   },
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
-  },
+  // Removing i18n config as it's incompatible with static export
   eslint: {
     dirs: ['src/pages', 'src/components', 'src/utils', 'src/styles'],
   },
@@ -25,35 +21,7 @@ const nextConfig = {
   compress: true,
   // Explicitly define page extensions
   pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
-          },
-        ],
-      },
-    ];
-  },
+  // Headers configuration will be ignored in static export mode
   webpack(config) {
     // Configuring SVG handling
     config.module.rules.push({

@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "out"
+  publish = ".next"
 
 [build.environment]
   NODE_VERSION = "18"
@@ -10,10 +10,10 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Configure the plugin
+# Configure the plugin for static export
 [plugins.inputs]
-  # Disable runtime as we're doing static export
-  useRuntime = false
+  # Use static export mode
+  staticExport = true
 
 [[redirects]]
   from = "/*"
