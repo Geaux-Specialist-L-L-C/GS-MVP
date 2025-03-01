@@ -1,38 +1,46 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import Layout from '../components/layout/Layout';
-import Hero from '../components/sections/Hero';
+import AnimatedHero from '../components/sections/AnimatedHero';
 import Button from '../components/ui/Button';
 import { FaGraduationCap, FaHandsHelping, FaMicrophone, FaStore } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import styles from '../styles/FeaturesSection.module.css';
 
-const FeaturesSection = dynamic(() => import('../components/sections/FeaturesSection'), { ssr: false });
 const TestimonialsSection = dynamic(() => import('../components/sections/TestimonialsSection'), { ssr: false });
 const FlipCardShowcase = dynamic(() => import('../components/sections/FlipCardShowcase'), { ssr: false });
 
 export default function Home() {
-  const features = [
+  const projects = [
     {
       title: 'Geaux Academy',
-      description: 'Personalized online learning solutions for healthcare professionals and students.',
-      icon: <FaGraduationCap className={styles.icon} />,
+      description: 'AI-Driven Educational Platform',
+      link: '/projects/geaux-academy',
+      image: '/images/projects/geaux-academy.jpg'
     },
     {
       title: 'Geaux HelpED',
-      description: 'Streamlined patient care and clinical operations for modern healthcare providers.',
-      icon: <FaHandsHelping className={styles.icon} />,
+      description: 'Educational Support Resources',
+      link: '/projects/geaux-helped',
+      image: '/images/projects/geaux-helped.jpg'
     },
     {
       title: 'ReanimatED Echos',
-      description: 'Preserving voices and clinical documentation through advanced AI technology.',
-      icon: <FaMicrophone className={styles.icon} />,
+      description: 'Legacy Preservation Technology',
+      link: '/projects/reanimated-echos',
+      image: '/images/projects/reanimated-echos.jpg'
+    },
+    {
+      title: 'SEO Geaux',
+      description: 'Digital Growth Strategies',
+      link: '/projects/seo-geaux',
+      image: '/images/projects/seo-geaux.jpg'
     },
     {
       title: 'Geaux Emporium',
-      description: 'Specialized healthcare educational resources and materials for continued learning.',
-      icon: <FaStore className={styles.icon} />,
-    },
+      description: 'Creative Marketplace Platform',
+      link: '/projects/geaux-emporium',
+      image: '/images/projects/geaux-emporium.jpg'
+    }
   ];
 
   const testimonials = [
@@ -41,7 +49,9 @@ export default function Home() {
       name: "Dr. Sarah Johnson",
       role: "Education Director",
       project: "Geaux Academy",
+      projectLink: "/projects/geaux-academy",
       image: "/images/testimonials/sarah-johnson.jpg",
+      rating: 5,
       metrics: [
         { value: "45%", label: "Engagement Increase" },
         { value: "1,200+", label: "Students Helped" }
@@ -52,7 +62,9 @@ export default function Home() {
       name: "Michael Chen, MD",
       role: "Chief Medical Officer",
       project: "Geaux HelpED",
+      projectLink: "/projects/geaux-helped",
       image: "/images/testimonials/michael-chen.jpg",
+      rating: 4.5,
       metrics: [
         { value: "32%", label: "Wait Time Reduction" },
         { value: "8,500+", label: "Patients Processed" }
@@ -63,90 +75,99 @@ export default function Home() {
       name: "Dr. Layla Rodriguez",
       role: "Hospital Administrator",
       project: "ReanimatED Echos",
+      projectLink: "/projects/reanimated-echos",
       image: "/images/testimonials/layla-rodriguez.jpg",
+      rating: 5,
       metrics: [
         { value: "85%", label: "Time Saved" },
         { value: "99.2%", label: "Accuracy Rate" }
-      ]
-    },
-    {
-      quote: "Since partnering with Geaux Emporium, our educational resources reach twice as many schools as before. The platform is intuitive and powerful.",
-      name: "James Thompson",
-      role: "Supply Chain Director",
-      project: "Geaux Emporium",
-      image: "/images/testimonials/james-thompson.jpg",
-      metrics: [
-        { value: "2x", label: "Market Reach" },
-        { value: "15K+", label: "Products Delivered" }
       ]
     }
   ];
 
   return (
     <Layout 
-      title="Home"
-      description="GeauxSpecialist LLC delivers innovative solutions across education, healthcare, technology, and e-commerce, empowering communities through advanced technology."
-      keywords="Geaux Academy, Geaux HelpED, ReanimatED Echos, Geaux Emporium, healthcare education, medical technology"
+      title="GeauxSpecialist - Innovative Solutions"
+      description="Empowering communities through innovative solutions across education, healthcare, technology, and e-commerce."
+      keywords="Geaux Academy, Geaux HelpED, ReanimatED Echos, Geaux Emporium, education technology, healthcare innovation"
       canonical="/"
     >
-      <Hero 
+      <AnimatedHero 
         title="Welcome to GeauxSpecialist"
         subtitle="Innovative solutions across education, healthcare, technology, and e-commerce."
-        ctaText="Explore Our Projects"
-        ctaLink="#projects-showcase"
-        backgroundImage="/images/hero-background.jpg"
+        primaryCta="Explore Our Projects"
+        primaryCtaLink="#projects"
+        backgroundImage="/images/hero-bg.jpg"
       />
 
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="intro-section"
-      >
-        <div className="container text-center py-16">
-          <h2 className="text-3xl font-bold mb-6">Empowering Communities Through Innovation</h2>
-          <p className="max-w-3xl mx-auto text-lg text-gray-600">
-            At Geaux Specialist LLC, we create transformative solutions that address real-world challenges in education, 
-            healthcare, and beyond. Our mission is to harness the power of technology to make a meaningful impact 
-            on communities across the globe.
-          </p>
+      <section className="intro-section" id="intro">
+        <div className="container mx-auto px-4">
+          <div className="py-16">
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl font-bold mb-6">Empowering Communities Through Innovation</h2>
+              <p className="max-w-3xl mx-auto text-lg text-gray-600">
+                At Geaux Specialist LLC, we create transformative solutions that address real-world challenges in education, 
+                healthcare, and beyond. Our mission is to harness the power of technology to make a meaningful impact 
+                on communities across the globe.
+              </p>
+            </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
-      <FlipCardShowcase />
-      
-      <FeaturesSection 
-        title="Our Projects"
-        subtitle="Discover the innovative solutions we're building to address real-world challenges."
-        features={features}
-        className="text-center"
-      />
-      
-      <TestimonialsSection
-        title="Success Stories"
-        subtitle="Real results from our satisfied clients and partners"
-        testimonials={testimonials}
-        className="text-center"
-        showProjectsButton={true}
-      />
+      <section className="projects-section" id="projects">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl font-bold text-center mb-6">Our Projects</h2>
+            <p className="text-xl text-gray-600 text-center mb-12">
+              Discover the innovative solutions from Geaux Specialist LLC
+            </p>
+            <FlipCardShowcase cards={projects} />
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="testimonials-section" id="testimonials">
+        <TestimonialsSection
+          title="Success Stories"
+          subtitle="Real results from our satisfied clients and partners"
+          testimonials={testimonials}
+          displayMode="carousel"
+          autoplaySpeed={7000}
+          bgColor="#f0f7ff"
+          showProjectsButton={true}
+        />
+      </section>
 
       <motion.section 
-        className="cta-section text-center"
+        className="cta-section"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
+        viewport={{ once: true }}
         transition={{ duration: 0.7 }}
       >
-        <div className="container py-16">
-          <h2 className="text-3xl font-bold mb-4">Ready to learn more about what we do?</h2>
-          <p className="text-xl max-w-2xl mx-auto mb-8">Contact us today to discuss how GeauxSpecialist can help bring your ideas to life.</p>
+        <div className="container mx-auto px-4 py-16 text-center">
+          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Ideas?</h2>
+          <p className="text-xl max-w-2xl mx-auto mb-8">
+            Contact us today to discuss how GeauxSpecialist can help bring your vision to life.
+          </p>
           <Button 
-            variant="secondary" 
+            variant="primary" 
             size="large"
             onClick={() => window.location.href = '/contact'}
           >
-            Contact Us
+            Start Your Project
           </Button>
         </div>
       </motion.section>
