@@ -1,15 +1,23 @@
 /* Navigation styles */
 .navigation {
   width: 100%;
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.0);
   position: sticky;
   top: 0;
   z-index: 1000;
   display: flex;
   align-items: center;
   padding: 1rem;
+  transition: all 0.3s ease;
   /* Add other styling as needed */
+}
+
+/* Add scrolled state styles */
+.scrolled {
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 1rem;
 }
 
 .navContainer {
@@ -19,6 +27,7 @@
   padding: 1rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .logo {
@@ -26,10 +35,27 @@
   font-weight: 700;
   color: #333;
   text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #0070f3;
+  transition: width 0.3s ease;
 }
 
 .logo:hover {
   color: #0070f3;
+}
+
+.logo:hover::after {
+  width: 100%;
 }
 
 .navLinks {
@@ -56,6 +82,23 @@
   padding: 0.5rem 0;
   display: block;
   transition: color 0.3s;
+  position: relative;
+}
+
+.navLinks a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0070f3;
+  transition: width 0.3s ease;
+}
+
+.navLinks a:hover::after,
+.active::after {
+  width: 100%;
 }
 
 .navLinks a:hover,
@@ -100,6 +143,19 @@
   bottom: -8px;
 }
 
+/* Animated hamburger when open */
+.hamburger.open {
+  background-color: transparent;
+}
+
+.hamburger.open::before {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open::after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
 .dropdown {
   position: relative;
 }
@@ -115,6 +171,7 @@
   align-items: center;
   gap: 0.25rem;
   padding: 0.5rem 0;
+  transition: color 0.3s;
 }
 
 .dropdownButton:hover {
@@ -126,7 +183,7 @@
 }
 
 .dropdown:hover .dropdownIcon,
-.dropdownButton[aria-expanded="true"] .dropdownIcon {
+.dropdownIcon.rotated {
   transform: rotate(180deg);
 }
 
@@ -135,7 +192,7 @@
   top: 100%;
   left: 0;
   background: white;
-  min-width: 200px;
+  min-width: 220px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 0.5rem 0;
@@ -145,6 +202,7 @@
   transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
   z-index: 100;
   list-style: none;
+  border-top: 3px solid #0070f3;
 }
 
 .dropdown:hover .dropdownMenu,
@@ -159,59 +217,99 @@
 }
 
 .dropdownMenu a {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.25rem;
+  transition: background-color 0.2s, color 0.2s;
+  display: block;
+}
+
+.dropdownMenu a::after {
+  display: none;
+}
+
+.dropdownMenu a:hover {
+  background-color: #f8f9fa;
+  color: #0070f3;
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .mobileMenuButton {
     display: block;
+    z-index: 101;
   }
   
   .navLinks {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
-    background: white;
-    padding: 1rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 5rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    transform: translateX(100%);
+    transition: transform 0.3s ease, opacity 0.3s, visibility 0.3s;
+    backdrop-filter: blur(10px);
   }
   
   .navLinks.open {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateX(0);
   }
   
   .navLinks ul {
     flex-direction: column;
     width: 100%;
+    padding: 0;
   }
   
   .navLinks li {
-    margin: 0.5rem 0;
+    margin: 0.75rem 0;
     width: 100%;
+    text-align: center;
+  }
+  
+  .navLinks a {
+    padding: 1rem 0;
+    font-size: 1.25rem;
+  }
+  
+  .dropdownButton {
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0;
+    font-size: 1.25rem;
   }
   
   .dropdownMenu {
     position: static;
     box-shadow: none;
-    padding-left: 1rem;
+    padding: 0;
     opacity: 0;
     max-height: 0;
     overflow: hidden;
     transform: none;
     transition: max-height 0.3s, opacity 0.3s;
+    border-top: none;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 0.5rem;
   }
   
   .dropdownMenu.show {
     opacity: 1;
     max-height: 500px;
-    padding: 0.5rem 0 0.5rem 1rem;
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dropdownMenu a {
+    padding: 1rem;
+    font-size: 1.125rem;
   }
 }

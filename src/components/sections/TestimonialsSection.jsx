@@ -1,19 +1,56 @@
 import React from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import styles from '../../styles/TestimonialsSection.module.css';
 
 const TestimonialsSection = ({ title, subtitle, testimonials, showProjectsButton = false }) => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
-    <section className={styles.testimonialSection}>
+    <section className={styles.testimonialSection} id="testimonials">
       <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 className="text-3xl font-bold mb-4">{title}</h2>
           {subtitle && <p className="text-xl text-gray-600">{subtitle}</p>}
-        </div>
+        </motion.div>
         
-        <div className={styles.testimonialGrid}>
+        <motion.div 
+          className={styles.testimonialGrid}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {testimonials.map((testimonial, index) => (
-            <div key={index} className={styles.testimonialCard}>
+            <motion.div 
+              key={index} 
+              className={styles.testimonialCard}
+              variants={itemVariants}
+              whileHover={{ y: -10, boxShadow: "0 10px 25px rgba(0,0,0,0.15)" }}
+            >
               <div className={styles.testimonialContent}>
                 <div className={styles.quoteIcon}>"</div>
                 <p className={styles.quote}>{testimonial.quote}</p>
@@ -40,18 +77,24 @@ const TestimonialsSection = ({ title, subtitle, testimonials, showProjectsButton
                   </div>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         
         {showProjectsButton && (
-          <div className="mt-12 flex justify-center">
+          <motion.div 
+            className="mt-12 flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             <Link href="/projects">
               <button className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
                 Explore Our Projects
               </button>
             </Link>
-          </div>
+          </motion.div>
         )}
       </div>
     </section>

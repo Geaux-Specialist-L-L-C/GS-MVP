@@ -8,18 +8,22 @@
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.8s ease;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform-style: preserve-3d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
 }
 
 /* Flip on hover if not using click mode */
 .flipCard:hover .flipCardInner:not(.flipped) {
   transform: rotateY(180deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Flipped state when using click mode */
 .flipCardInner.flipped {
   transform: rotateY(180deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .flipCardFront,
@@ -30,7 +34,6 @@
   backface-visibility: hidden;
   border-radius: 0.5rem;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,6 +44,7 @@
   background-color: #ffffff;
   color: #2d3748;
   z-index: 2;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .flipCardBack {
@@ -51,7 +55,11 @@
 
 /* For focus and accessibility */
 .flipCard:focus {
-  outline: 2px solid #3182ce;
+  outline: none;
+}
+
+.flipCard:focus .flipCardInner {
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.5);
 }
 
 /* Animation improvements */
@@ -66,4 +74,16 @@
   .flipCard {
     margin: 0.5rem;
   }
+}
+
+/* Additional hover effects */
+.flipCard:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+/* Ensure content remains readable */
+.flipCardFront *,
+.flipCardBack * {
+  max-width: 100%;
 }

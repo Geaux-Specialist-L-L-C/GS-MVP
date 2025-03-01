@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from '../../styles/FlipCard.module.css';
 
@@ -14,6 +14,8 @@ import styles from '../../styles/FlipCard.module.css';
  * @param {string} props.className - Additional CSS class to apply to the component
  * @param {number} props.width - Card width in pixels
  * @param {number} props.height - Card height in pixels
+ * @param {string} props.frontAriaLabel - Accessibility label for front card content
+ * @param {string} props.backAriaLabel - Accessibility label for back card content
  */
 const FlipCard = ({
   frontContent,
@@ -22,15 +24,41 @@ const FlipCard = ({
   className = '',
   width = 300,
   height = 200,
+  frontAriaLabel = 'Card front',
+  backAriaLabel = 'Card back'
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const cardRef = useRef(null);
 
+  // Handle click event
   const handleClick = () => {
     if (flipOnClick) {
       setIsFlipped(!isFlipped);
     }
   };
-
+  
+  // Handle keyboard events for accessibility
+  const handleKeyDown = (e) => {
+    if (flipOnClick && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      setIsFlipped(!isFlipped);
+    }
+  };
+  
+  // Add focus trap when card is flipped
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (isFlipped && e.key === 'Escape') {
+        setIsFlipped(false);
+      }
+    };
+    
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [isFlipped]);
+  
   const cardStyle = {
     width: `${width}px`,
     height: `${height}px`,
@@ -41,15 +69,31 @@ const FlipCard = ({
       className={`${styles.flipCard} ${className}`} 
       style={cardStyle}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      tabIndex={flipOnClick ? 0 : -1}
+      role={flipOnClick ? "button" : "presentation"}
+      aria-pressed={flipOnClick ? isFlipped : undefined}
+      ref={cardRef}
     >
-      <div className={`${styles.flipCardInner} ${isFlipped ? styles.flipped : ''}`}>
+      <div 
+        className={`${styles.flipCardInner} ${isFlipped ? styles.flipped : ''}`}
+        aria-live="polite"
+      >
         {/* Front */}
-        <div className={styles.flipCardFront}>
+        <div 
+          className={styles.flipCardFront} 
+          aria-label={frontAriaLabel}
+          aria-hidden={isFlipped}
+        >
           {frontContent}
         </div>
 
         {/* Back */}
-        <div className={styles.flipCardBack}>
+        <div 
+          className={styles.flipCardBack} 
+          aria-label={backAriaLabel}
+          aria-hidden={!isFlipped}
+        >
           {backContent}
         </div>
       </div>
@@ -64,6 +108,8 @@ FlipCard.propTypes = {
   className: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
+  frontAriaLabel: PropTypes.string,
+  backAriaLabel: PropTypes.string
 };
 
 export default FlipCard;
