@@ -1,133 +1,338 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Layout from '../../components/layout/Layout';
-import Hero from '../../components/sections/Hero';
-import dynamic from 'next/dynamic';
-import Button from '../../components/ui/Button';
+import AnimatedHero from '../../components/sections/AnimatedHero';
+import { FaStore, FaHandshake, FaPalette, FaCreditCard, FaChartBar, FaGlobeAmericas } from 'react-icons/fa';
+import styles from '../../styles/ProjectDetail.module.css';
 
-const FeaturesSection = dynamic(() => import('../../components/sections/FeaturesSection'), { ssr: false });
+/**
+ * Geaux Emporium Project Page
+ * 
+ * Detailed information about the Geaux Emporium project, showcasing
+ * our creative marketplace platform for artists, crafters, and makers.
+ */
+const GeauxEmporiumPage = () => {
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
 
-const GeauxEmporium = () => {
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+  
+  // Features of Geaux Emporium
   const features = [
     {
-      title: 'Curated Resources',
-      description: 'Carefully selected educational materials and resources for healthcare professionals.',
-      icon: '/images/curated-resources-icon.svg',
+      icon: <FaStore size={36} className={styles.featureIcon} />,
+      title: "Customizable Storefronts",
+      description: "Personalized digital shops that showcase creators' unique brands with customizable themes, layouts, and promotional tools."
     },
     {
-      title: 'Personalized Recommendations',
-      description: 'AI-driven recommendations based on specialties, interests, and previous purchases.',
-      icon: '/images/recommendations-icon.svg',
+      icon: <FaHandshake size={36} className={styles.featureIcon} />,
+      title: "Creator Community",
+      description: "Vibrant network where artists and makers connect, collaborate, and share insights to grow their creative businesses."
     },
     {
-      title: 'Seamless Shopping Experience',
-      description: 'User-friendly interface designed for busy healthcare professionals.',
-      icon: '/images/shopping-experience-icon.svg',
+      icon: <FaPalette size={36} className={styles.featureIcon} />,
+      title: "AI-Enhanced Creation Tools",
+      description: "Innovative design assistance that helps creators enhance their products with AI-powered suggestions and trending market insights."
     },
     {
-      title: 'Continuing Education',
-      description: 'Access to materials that qualify for continuing education credits.',
-      icon: '/images/continuing-education-icon.svg',
+      icon: <FaCreditCard size={36} className={styles.featureIcon} />,
+      title: "Seamless Transactions",
+      description: "Secure payment processing with multiple payment options, automatic tax calculations, and streamlined order management."
     },
+    {
+      icon: <FaChartBar size={36} className={styles.featureIcon} />,
+      title: "Business Analytics",
+      description: "Comprehensive performance metrics and insights that help creators track sales, understand customer behavior, and optimize strategies."
+    },
+    {
+      icon: <FaGlobeAmericas size={36} className={styles.featureIcon} />,
+      title: "Global Marketplace",
+      description: "Worldwide exposure connecting creators with international customers, including multi-currency support and localized shopping experiences."
+    }
+  ];
+
+  // Benefits and outcomes
+  const benefits = [
+    "Average 43% increase in sales for creators after three months on the platform",
+    "Creative community of over 15,000 makers across 52 countries",
+    "Lower commission rates than competing marketplaces (12% vs. industry average 25%)",
+    "AI-powered trend analysis helps creators stay ahead of market demands",
+    "Built-in marketing tools that enhance product visibility and reach",
+    "Specialized categories that help unique products find their niche audience"
+  ];
+
+  // Technologies used
+  const technologies = [
+    "React", "Next.js", "GraphQL", 
+    "Node.js", "PostgreSQL", "Redis", 
+    "Stripe API", "AWS", "TensorFlow", 
+    "Elasticsearch", "Docker"
   ];
 
   return (
-    <Layout title="Geaux Emporium">
-      <Hero 
+    <Layout 
+      title="Geaux Emporium"
+      description="A creative marketplace platform connecting unique makers with enthusiastic buyers through innovative e-commerce solutions."
+      keywords="creative marketplace, handmade products, artisan marketplace, e-commerce platform, creators, makers"
+      canonical="/projects/geaux-emporium"
+      ogImage="/images/projects/geaux-emporium-og.jpg"
+    >
+      <AnimatedHero 
         title="Geaux Emporium"
-        subtitle="Your premier destination for specialized healthcare educational resources and materials."
-        ctaText="Browse Store"
-        ctaLink="#store-categories"
-        backgroundImage="/images/geaux-emporium-hero.jpg"
+        subtitle="Empowering creators and makers with an innovative marketplace platform"
+        primaryCta="Explore Platform"
+        primaryCtaLink="#features"
+        secondaryCta="Join Marketplace"
+        secondaryCtaLink="#contact"
+        backgroundImage="/images/projects/geaux-emporium-hero.jpg"
       />
 
-      <section className="project-overview">
+      <section className={styles.overview} id="overview">
         <div className="container">
-          <div className="project-description">
-            <h2>Your One-Stop Educational Resource Shop</h2>
-            <p>
-              Geaux Emporium is an e-commerce platform specifically designed for healthcare 
-              professionals seeking educational resources, reference materials, and learning tools.
-              Our carefully curated selection focuses on high-quality, evidence-based materials that 
-              enhance clinical practice and knowledge.
-            </p>
-            <p>
-              Whether you're a student, practicing clinician, or educator, Geaux Emporium offers 
-              resources tailored to your specific needs and specialty, with seamless integration 
-              with our other platforms for a unified learning experience.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <FeaturesSection 
-        title="Platform Features"
-        subtitle="Discover what makes Geaux Emporium the preferred marketplace for healthcare educational resources."
-        features={features}
-      />
-
-      <section id="store-categories" className="store-categories">
-        <div className="container">
-          <h2 className="section-title">Store Categories</h2>
-          <div className="categories-grid">
-            <div className="category-card">
-              <h3>Textbooks & References</h3>
-              <p>Comprehensive textbooks and reference guides covering all medical specialties.</p>
-              <Button 
-                variant="outline"
-                onClick={() => window.open('https://emporium.geauxspecialist.com/textbooks', '_blank')}
-              >
-                View Collection
-              </Button>
-            </div>
-            <div className="category-card">
-              <h3>Digital Learning Tools</h3>
-              <p>Interactive applications, simulations, and digital learning aids.</p>
-              <Button 
-                variant="outline"
-                onClick={() => window.open('https://emporium.geauxspecialist.com/digital-tools', '_blank')}
-              >
-                View Collection
-              </Button>
-            </div>
-            <div className="category-card">
-              <h3>Clinical Practice Materials</h3>
-              <p>Quick reference guides, checklists, and practical tools for clinical settings.</p>
-              <Button 
-                variant="outline"
-                onClick={() => window.open('https://emporium.geauxspecialist.com/clinical-materials', '_blank')}
-              >
-                View Collection
-              </Button>
-            </div>
-            <div className="category-card">
-              <h3>Continuing Education</h3>
-              <p>Resources that qualify for continuing education credits across specialties.</p>
-              <Button 
-                variant="outline"
-                onClick={() => window.open('https://emporium.geauxspecialist.com/continuing-education', '_blank')}
-              >
-                View Collection
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="project-cta">
-        <div className="container">
-          <h2>Ready to enhance your medical knowledge?</h2>
-          <p>Explore our collection of premium educational resources designed for healthcare professionals.</p>
-          <Button 
-            variant="primary" 
-            size="large"
-            onClick={() => window.open('https://emporium.geauxspecialist.com', '_blank')}
+          <motion.div 
+            className={styles.overviewContent}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
           >
-            Visit Geaux Emporium
-          </Button>
+            <h2 className={styles.sectionTitle}>Where Creativity Meets Commerce</h2>
+            <div className={styles.overviewText}>
+              <p>
+                Geaux Emporium is our specialized marketplace platform that bridges the gap between independent 
+                creators and consumers seeking authentic, unique products. We've designed a digital ecosystem 
+                where artisans, crafters, designers, and makers can showcase their work, build their brands, 
+                and reach customers around the world.
+              </p>
+              <p>
+                Unlike conventional e-commerce platforms, Geaux Emporium emphasizes the stories behind products 
+                and the people who make them. Our technology enhances the creator-consumer relationship through 
+                immersive product presentations, direct communication channels, and a supportive community that 
+                celebrates creativity and craftsmanship in all its forms.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className={styles.features} id="features">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className={styles.sectionTitle}>Platform Features</h2>
+            <p className={styles.sectionSubtitle}>
+              Discover the tools and capabilities that help creators thrive in our marketplace
+            </p>
+            
+            <motion.div 
+              className={styles.featuresGrid}
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {features.map((feature, index) => (
+                <motion.div 
+                  key={index} 
+                  className={styles.featureCard}
+                  variants={itemVariants}
+                >
+                  <div className={styles.featureIconContainer}>
+                    {feature.icon}
+                  </div>
+                  <h3 className={styles.featureTitle}>{feature.title}</h3>
+                  <p className={styles.featureDescription}>{feature.description}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className={styles.benefits}>
+        <div className="container">
+          <div className={styles.benefitsContainer}>
+            <motion.div 
+              className={styles.benefitsContent}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className={styles.sectionTitle}>The Emporium Advantage</h2>
+              <p className={styles.benefitsIntro}>
+                Joining Geaux Emporium gives creators more than just a place to sell—it provides a 
+                complete ecosystem for growing a sustainable creative business:
+              </p>
+              
+              <ul className={styles.benefitsList}>
+                {benefits.map((benefit, index) => (
+                  <motion.li 
+                    key={index}
+                    className={styles.benefitItem}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                  >
+                    <span className={styles.benefitIcon}>✓</span>
+                    <span className={styles.benefitText}>{benefit}</span>
+                  </motion.li>
+                ))}
+              </ul>
+
+              <motion.div 
+                className={styles.ctaWrapper}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <a href="#contact" className={styles.ctaButton}>
+                  Join Our Community
+                </a>
+              </motion.div>
+            </motion.div>
+
+            <motion.div 
+              className={styles.technologiesContainer}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className={styles.technologiesTitle}>Technologies Used</h3>
+              <div className={styles.technologiesList}>
+                {technologies.map((tech, index) => (
+                  <motion.span 
+                    key={index}
+                    className={styles.technologyBadge}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05, duration: 0.4 }}
+                    whileHover={{ y: -5 }}
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.caseStudy}>
+        <div className="container">
+          <motion.div 
+            className={styles.caseStudyContainer}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className={styles.caseStudyContent}>
+              <h2 className={styles.caseStudyTitle}>Creator Spotlight</h2>
+              <h3 className={styles.caseStudySubtitle}>Willow Craft Ceramics</h3>
+              
+              <p className={styles.caseStudyText}>
+                When ceramic artist Elise Willow joined Geaux Emporium, she was selling her handcrafted 
+                pottery through local craft fairs and a basic personal website, reaching a limited audience. 
+                Within six months on our platform, her business transformed dramatically with expanded reach, 
+                streamlined operations, and a thriving community of loyal customers.
+              </p>
+              
+              <blockquote className={styles.caseStudyQuote}>
+                "Geaux Emporium has completely revolutionized my pottery business. The platform's tools helped me 
+                create a beautiful online presence that reflects my brand, while the community aspect connects me 
+                with customers who truly appreciate handcrafted ceramics. The business analytics have been invaluable 
+                in helping me understand which products resonate most with my audience."
+              </blockquote>
+              
+              <p className={styles.caseStudyAuthor}>
+                — Elise Willow, Founder of Willow Craft Ceramics
+              </p>
+            </div>
+            
+            <div className={styles.caseStudyResults}>
+              <div className={styles.resultCard}>
+                <h4 className={styles.resultValue}>215%</h4>
+                <p className={styles.resultLabel}>Increase in monthly sales</p>
+              </div>
+              
+              <div className={styles.resultCard}>
+                <h4 className={styles.resultValue}>65%</h4>
+                <p className={styles.resultLabel}>International customer growth</p>
+              </div>
+              
+              <div className={styles.resultCard}>
+                <h4 className={styles.resultValue}>3,500+</h4>
+                <p className={styles.resultLabel}>Followers gained</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className={styles.contact} id="contact">
+        <div className="container">
+          <motion.div 
+            className={styles.contactContent}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className={styles.contactTitle}>Ready to Share Your Creations?</h2>
+            <p className={styles.contactText}>
+              Join thousands of creative entrepreneurs who have found their home at Geaux Emporium. 
+              Our platform provides everything you need to showcase your products, connect with customers, 
+              and grow your creative business.
+            </p>
+            <div className={styles.contactButtons}>
+              <motion.a 
+                href="/contact?project=geaux-emporium" 
+                className={`${styles.contactButton} ${styles.primaryButton}`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Apply as Creator
+              </motion.a>
+              <motion.a 
+                href="https://www.geauxemporium.com/explore" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={`${styles.contactButton} ${styles.secondaryButton}`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Explore Marketplace
+              </motion.a>
+            </div>
+          </motion.div>
         </div>
       </section>
     </Layout>
   );
 };
 
-export default GeauxEmporium;
+export default GeauxEmporiumPage;

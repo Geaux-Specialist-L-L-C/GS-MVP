@@ -9,300 +9,211 @@ This comprehensive guide outlines the development process, standards, and workfl
 3. [Project Structure](#project-structure)
 4. [Development Workflow](#development-workflow)
 5. [Coding Standards](#coding-standards)
-6. [Performance Optimization](#performance-optimization)
-7. [Testing Strategy](#testing-strategy)
-8. [Deployment Process](#deployment-process)
-9. [Maintenance Guidelines](#maintenance-guidelines)
+6. [Components Library](#components-library)
+7. [Performance Optimization](#performance-optimization)
+8. [Testing Strategy](#testing-strategy)
+9. [Deployment Process](#deployment-process)
+10. [Maintenance Guidelines](#maintenance-guidelines)
+11. [Development Status](#development-status)
 
 ## Project Overview
 
 GeauxSpecialist.com serves as the central hub for Geaux Specialist LLC, showcasing the company's various projects:
-- Geaux Academy
-- Geaux HelpED
-- ReanimatED Echos
-- Geaux Emporium
+- Geaux Academy - AI-driven educational platform
+- Geaux HelpED - Educational support resources
+- ReanimatED Echos - Legacy preservation technology
+- SEO Geaux - Digital growth strategies
+- Geaux Emporium - Creative marketplace platform
 
 The website is built with Next.js to leverage server-side rendering, static site generation, and optimized client-side navigation.
-
-### Key Requirements
-
-- Professional and modern design
-- Responsive across all devices
-- Fast-loading and SEO-friendly
-- Easy to navigate with intuitive UX
-- Scalable for future growth
 
 ## Development Environment Setup
 
 ### Prerequisites
-
-- Node.js (v14.x or later recommended)
-- npm (v7.x or later) or Yarn (v1.22.x or later)
+- Node.js (v16.x or later)
+- npm (v8.x or later) or yarn (v1.22.x or later)
 - Git
 
-### Initial Setup
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/[your-organization]/geauxspecialist.git
-   cd geauxspecialist
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. Create environment files:
-   - Copy `.env.example` to `.env.local`
-   - Configure environment variables as needed
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-5. Access the site at `http://localhost:3000`
+### Installation Steps
+1. Clone the repository: `git clone https://github.com/geauxspecialist/gs-mvp.git`
+2. Navigate to the project directory: `cd gs-mvp`
+3. Install dependencies: `npm install` or `yarn install`
+4. Start the development server: `npm run dev` or `yarn dev`
+5. Open your browser at `http://localhost:3000`
 
 ## Project Structure
 
+The project follows a standard Next.js structure with custom organization for components:
+
 ```
-geauxspecialist/
-├── components/          # Reusable UI components
-│   ├── layout/          # Layout components (header, footer, etc.)
-│   ├── sections/        # Page sections (hero, features, etc.)
-│   └── ui/              # UI elements (buttons, cards, etc.)
-├── pages/               # Next.js pages
-│   ├── projects/        # Project-specific pages
-│   │   ├── geaux-academy.js
-│   │   ├── geaux-helped.js
-│   │   ├── reanimated-echos.js
-│   │   └── geaux-emporium.js
-│   ├── _app.js          # Custom App component
-│   ├── _document.js     # Custom Document component
-│   ├── index.js         # Home page
-│   ├── about.js         # About page
-│   ├── projects.js      # Projects overview page
-│   └── contact.js       # Contact page
-├── public/              # Static assets
-│   ├── images/          # Image files
-│   ├── fonts/           # Font files
-│   └── favicon.ico      # Site favicon
-├── styles/              # Global styles and CSS modules
-│   ├── globals.css      # Global CSS
-│   └── *.module.css     # Component-specific CSS modules
-├── utils/               # Utility functions
-├── .github/             # GitHub configuration
-│   └── workflows/       # GitHub Actions workflows
-├── .eslintrc.json       # ESLint configuration
-├── .prettierrc          # Prettier configuration
-├── next.config.js       # Next.js configuration
-├── package.json         # Project dependencies
-└── README.md            # Project documentation
+gs-mvp/
+├── public/             # Static assets
+├── src/                # Source code
+│   ├── components/     # React components
+│   │   ├── forms/      # Form components
+│   │   ├── layout/     # Layout components
+│   │   ├── sections/   # Page section components
+│   │   └── ui/         # UI components
+│   ├── pages/          # Next.js pages
+│   │   └── projects/   # Project-specific pages
+│   ├── stories/        # Storybook stories
+│   └── styles/         # CSS modules
+├── .eslintrc.js        # ESLint configuration
+├── .gitignore          # Git ignore file
+├── jest.config.js      # Jest configuration
+├── next.config.js      # Next.js configuration
+├── package.json        # Project dependencies
+└── tsconfig.json       # TypeScript configuration
 ```
 
 ## Development Workflow
 
 ### Branch Strategy
+- `main` - Production-ready code
+- `dev` - Development branch, merge features here
+- `feature/feature-name` - Feature branches
 
-- `main`: Production-ready code
-- `develop`: Integration branch for features
-- `feature/*`: Feature-specific branches
-- `bugfix/*`: Bug fix branches
-- `hotfix/*`: Emergency fixes for production
-
-### Feature Development Process
-
-1. **Create Feature Branch**
-   ```bash
-   git checkout develop
-   git pull
-   git checkout -b feature/feature-name
-   ```
-
-2. **Implement Feature**
-   - Follow coding standards
-   - Create/modify components as needed
-   - Add tests for new functionality
-
-3. **Commit Changes**
-   - Use descriptive commit messages following the format:
-     ```
-     [feature/fix/chore/docs]: Brief description
-     
-     Detailed explanation if needed
-     ```
-
-4. **Create Pull Request**
-   - Push branch and create PR against `develop`
-   - Fill out PR template with details
-   - Request review from team members
-
-5. **Code Review & Merge**
-   - Address review comments
-   - Update code as needed
-   - Merge to `develop` once approved
-
-### Issue Management
-
-- Use GitHub Issues for tracking bugs and feature requests
-- Label issues appropriately (`bug`, `enhancement`, `documentation`, etc.)
-- Link commits and PRs to related issues
+### Development Process
+1. Create a feature branch from `dev`
+2. Implement the feature with appropriate tests
+3. Submit a pull request to `dev`
+4. After review and approval, merge to `dev`
+5. Periodically, merge `dev` into `main` for releases
 
 ## Coding Standards
 
-### JavaScript/React Standards
+### JavaScript/React
+- Use ES6+ syntax
+- Follow React best practices and hooks patterns
+- Use functional components with hooks instead of class components
+- Comment complex logic and component purposes
+- Use PropTypes or TypeScript for component prop validation
 
-- Use modern ES6+ syntax
-- Use functional components with hooks
-- Follow destructuring and spread operator best practices
-- Implement proper error handling
+### CSS
+- Use CSS modules for component styling
+- Follow BEM naming convention for classes
+- Maintain responsive design principles
+- Use variables for colors, spacing, and typography
 
-### Component Structure
+### Accessibility
+- Maintain WCAG 2.1 AA compliance
+- Use semantic HTML elements
+- Include appropriate ARIA attributes
+- Ensure keyboard navigation support
+- Test with screen readers
 
-```jsx
-// Preferred component format
-import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import styles from './ComponentName.module.css';
+## Components Library
 
-const ComponentName = ({ prop1, prop2, children }) => {
-  // State and hooks
-  const [state, setState] = useState(initialState);
-  
-  // Side effects
-  useEffect(() => {
-    // Effect logic
-    return () => {
-      // Cleanup logic
-    };
-  }, [dependencies]);
-  
-  // Event handlers
-  const handleEvent = () => {
-    // Event logic
-  };
-  
-  // Render logic
-  return (
-    <div className={styles.container}>
-      {/* Component JSX */}
-    </div>
-  );
-};
+### UI Components
+- **Button**: Customizable button with various styles and sizes
+- **Card**: Content container with optional hover effects
+- **FlipCard**: Interactive card that flips to reveal content
+- **ProjectCard**: Specialized card for project display
 
-// PropTypes for type checking
-ComponentName.propTypes = {
-  prop1: PropTypes.string.isRequired,
-  prop2: PropTypes.number,
-  children: PropTypes.node
-};
+### Layout Components
+- **Layout**: Main layout wrapper with meta tags and SEO
+- **Header**: Responsive navigation header
+- **Footer**: Site footer with links and company info
+- **Navigation**: Main navigation menu
 
-// Default props
-ComponentName.defaultProps = {
-  prop2: 0
-};
+### Section Components
+- **Hero**: Main landing section with call-to-action
+- **AnimatedHero**: Enhanced hero with animations
+- **FeaturesSection**: Display project features in grid
+- **FlipCardShowcase**: Grid display of FlipCard components
+- **TestimonialsSection**: Customer testimonials display
 
-export default ComponentName;
-```
-
-### CSS Standards
-
-- Use CSS modules for component-specific styling
-- Follow BEM naming convention for class names
-- Implement responsive design with mobile-first approach
-- Maintain consistent color scheme and typography
-
-### SEO Best Practices
-
-- Use semantic HTML tags
-- Implement proper meta tags for each page
-- Optimize image sizes and use descriptive alt text
-- Implement structured data where appropriate
+### Form Components
+- **ContactForm**: Validated contact form with submission handling
 
 ## Performance Optimization
 
-### Image Optimization
-
-- Use Next.js Image component for automatic optimization
-- Choose appropriate formats (WebP when possible)
-- Apply responsive sizing and lazy loading
-
-### Code Splitting
-
-- Use dynamic imports for large components
-- Implement lazy loading for below-the-fold content
-- Optimize bundle size with proper imports
-
-### Caching Strategy
-
-- Implement appropriate cache headers
-- Use Next.js ISR (Incremental Static Regeneration) where possible
-- Optimize data fetching patterns
+- Use Next.js Image component for optimized images
+- Implement code splitting with dynamic imports
+- Lazy load below-the-fold content
+- Optimize animations with will-change and GPU acceleration
+- Cache API responses where appropriate
 
 ## Testing Strategy
 
 ### Unit Testing
-
-- Use Jest for component and utility function testing
-- Achieve at least 80% code coverage
-- Test component rendering, state changes, and user interactions
+- Use Jest for unit tests
+- Test component rendering and functionality
+- Mock external dependencies
 
 ### Integration Testing
-
 - Test component interactions
-- Validate form submissions and data flow
-- Ensure UI elements work together as expected
+- Validate form submissions and validations
 
-### E2E Testing
+### End-to-End Testing
+- Use Cypress for E2E testing
+- Test critical user flows
 
-- Use Cypress for critical user flows
-- Test navigation, form submissions, and overall UX
-- Automate testing in CI/CD pipeline
+### Accessibility Testing
+- Use axe-core for automated accessibility tests
+- Perform manual keyboard navigation testing
 
 ## Deployment Process
 
 ### Staging Deployment
-
-- Automatically deploy `develop` branch to staging environment
-- Perform QA and testing before production deployment
-- Validate features in a production-like environment
+1. Merge features into `dev` branch
+2. Automated deployment to staging environment
+3. Perform QA testing
 
 ### Production Deployment
-
-- Merge `develop` to `main` after successful staging validation
-- Trigger automatic deployment to production
-- Monitor application performance and error rates
-
-### Rollback Procedure
-
-- Keep track of deployment versions
-- Implement quick rollback mechanism in case of issues
-- Document steps for manual rollback if needed
+1. Create a release branch from `dev`
+2. Perform final QA on release branch
+3. Merge to `main` branch
+4. Automated deployment to production
 
 ## Maintenance Guidelines
 
 ### Regular Updates
+- Update dependencies monthly
+- Review and resolve security vulnerabilities
+- Monitor performance metrics
 
-- Keep dependencies updated monthly
-- Review and update content quarterly
-- Perform security audits regularly
+### Code Reviews
+- All PRs require at least one reviewer
+- Check for code quality, performance, and accessibility
+- Ensure test coverage for new features
 
-### Performance Monitoring
+## Development Status
 
-- Implement analytics and performance monitoring
-- Set up alerts for error spikes or performance degradation
-- Schedule quarterly performance reviews
+### Completed Features
+- ✅ Basic project structure and component architecture
+- ✅ Layout component with SEO optimizations
+- ✅ Enhanced Navigation component
+- ✅ Animated Hero component
+- ✅ FlipCard interactive component
+- ✅ Project showcase with flip cards
+- ✅ Footer component with social links
+- ✅ Detailed project page for Geaux Academy
+- ✅ Contact form with validation
+- ✅ Individual project pages for all projects (Geaux Academy, ReanimatED Echos, Geaux HelpED, Geaux Emporium)
+- ✅ Enhanced TestimonialsSection with carousel functionality and star ratings
 
-### Documentation
+### In Progress
+- 🟡 Features section completion
+- 🟡 Performance optimizations
+- 🟡 Project listing page refinement
 
-- Update documentation when adding new features
-- Document known issues and their workarounds
-- Maintain a changelog for version tracking
+### Pending Tasks
+- ⬜ About page implementation
+- ⬜ Blog/News section
+- ⬜ Integration with CMS for content management
+- ⬜ API routes for form submissions
+- ⬜ Analytics integration
+- ⬜ Unit and integration tests
+- ⬜ Storybook documentation for all components
+- ⬜ CI/CD pipeline setup
+- ⬜ Progressive Web App (PWA) features
+
+### Known Issues
+- Form submissions currently use mock functionality
+- Missing fallback/error states for some components
+- Some responsive design adjustments needed for small devices
+- Accessibility improvements needed for interactive elements
 
 ---
 

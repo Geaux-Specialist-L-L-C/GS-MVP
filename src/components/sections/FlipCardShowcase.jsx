@@ -35,7 +35,7 @@ const FlipCardShowcase = () => {
         subtitle: 'AI-Driven Educational Platform',
       },
       back: {
-        description: 'Revolutionizing K-12 education with personalized learning experiences. Our platform leverages OpenAI's GPT to develop custom curricula that adapt to each student's unique learning style.',
+        description: 'Revolutionizing K-12 education with personalized learning experiences. Our platform leverages OpenAI\'s GPT to develop custom curricula that adapt to each student\'s unique learning style.',
         ctaText: 'Learn More',
         ctaLink: '/projects/geaux-academy',
       },
