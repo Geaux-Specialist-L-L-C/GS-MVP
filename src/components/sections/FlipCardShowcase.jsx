@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import FlipCard from '../ui/FlipCard';
 import styles from '../../styles/FlipCardShowcase.module.css';
@@ -8,8 +8,11 @@ import styles from '../../styles/FlipCardShowcase.module.css';
  * 
  * A demonstration component that displays multiple FlipCard components
  * in a grid layout, showcasing different projects under Geaux Specialist LLC.
+ * Enhanced with improved animations, filtering capabilities, and keyboard navigation.
  */
-const FlipCardShowcase = () => {
+const FlipCardShowcase = ({ filterCategory = null }) => {
+  const [hoveredCard, setHoveredCard] = useState(null);
+
   // Content for the project cards with comprehensive descriptions
   const projectCards = [
     {
@@ -26,7 +29,8 @@ const FlipCardShowcase = () => {
       ariaLabels: {
         front: 'Geaux Specialist LLC information',
         back: 'About Geaux Specialist LLC'
-      }
+      },
+      category: 'company'
     },
     {
       id: 1,
@@ -42,7 +46,8 @@ const FlipCardShowcase = () => {
       ariaLabels: {
         front: 'Geaux Academy information',
         back: 'Learn about Geaux Academy'
-      }
+      },
+      category: 'education'
     },
     {
       id: 2,
@@ -58,7 +63,8 @@ const FlipCardShowcase = () => {
       ariaLabels: {
         front: 'Geaux HelpED information',
         back: 'Learn about Geaux HelpED'
-      }
+      },
+      category: 'education'
     },
     {
       id: 3,
@@ -74,7 +80,8 @@ const FlipCardShowcase = () => {
       ariaLabels: {
         front: 'ReanimatED Echos information',
         back: 'Learn about ReanimatED Echos'
-      }
+      },
+      category: 'technology'
     },
     {
       id: 4,
@@ -90,7 +97,8 @@ const FlipCardShowcase = () => {
       ariaLabels: {
         front: 'SEO Geaux information',
         back: 'Learn about SEO Geaux'
-      }
+      },
+      category: 'marketing'
     },
     {
       id: 5,
@@ -106,9 +114,15 @@ const FlipCardShowcase = () => {
       ariaLabels: {
         front: 'Geaux Emporium information',
         back: 'Learn about Geaux Emporium'
-      }
+      },
+      category: 'ecommerce'
     },
   ];
+
+  // Filter cards if a category is provided
+  const filteredCards = filterCategory 
+    ? projectCards.filter(card => card.category === filterCategory)
+    : projectCards;
 
   // Animation variants for staggered card appearance
   const containerVariants = {
@@ -133,6 +147,15 @@ const FlipCardShowcase = () => {
     }
   };
 
+  // Animation for card hover states
+  const hoverEffect = (id) => {
+    return {
+      scale: hoveredCard === id ? 1.03 : 1,
+      y: hoveredCard === id ? -5 : 0,
+      transition: { type: 'spring', stiffness: 300, damping: 10 }
+    };
+  };
+
   return (
     <section className={styles.showcase} id="projects-showcase">
       <div className="container">
@@ -153,24 +176,38 @@ const FlipCardShowcase = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {projectCards.map((card) => (
+          {filteredCards.map((card) => (
             <motion.div 
               key={card.id} 
               variants={cardVariants}
+              animate={hoverEffect(card.id)}
+              onMouseEnter={() => setHoveredCard(card.id)}
+              onMouseLeave={() => setHoveredCard(null)}
+              onFocus={() => setHoveredCard(card.id)}
+              onBlur={() => setHoveredCard(null)}
+              className={styles.cardWrapper}
             >
               <FlipCard
                 frontContent={
                   <div className={styles.cardFront}>
                     <h3 className={styles.cardTitle}>{card.front.title}</h3>
                     <p className={styles.cardSubtitle}>{card.front.subtitle}</p>
+                    <div className={styles.flipPrompt}>
+                      <span className={styles.flipIcon}>↪</span> Click to learn more
+                    </div>
                   </div>
                 }
                 backContent={
                   <div className={styles.cardBack}>
                     <p className={styles.cardDescription}>{card.back.description}</p>
-                    <a href={card.back.ctaLink} className={styles.cardCta}>
+                    <motion.a 
+                      href={card.back.ctaLink} 
+                      className={styles.cardCta}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
                       {card.back.ctaText}
-                    </a>
+                    </motion.a>
                   </div>
                 }
                 flipOnClick={true}
@@ -181,6 +218,29 @@ const FlipCardShowcase = () => {
               />
             </motion.div>
           ))}
+        </motion.div>
+        
+        {filteredCards.length === 0 && (
+          <motion.div 
+            className={styles.noResults}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
+          >
+            <p>No projects found in this category.</p>
+          </motion.div>
+        )}
+
+        <motion.div 
+          className={styles.showcaseFooter}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+        >
+          <a href="/projects" className={styles.viewAllLink}>
+            View All Projects
+          </a>
         </motion.div>
       </div>
     </section>

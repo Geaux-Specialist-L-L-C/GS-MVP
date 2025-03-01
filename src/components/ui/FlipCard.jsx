@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 import styles from '../../styles/FlipCard.module.css';
 
 /**
  * FlipCard Component
  * 
- * A reusable card component that flips on hover or click to reveal content on both sides
+ * A reusable card component that flips on hover or click to reveal content on both sides.
+ * Enhanced with framer-motion animations, keyboard navigation and reduced motion preferences.
  * 
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.frontContent - Content to display on the front of the card
@@ -28,7 +30,24 @@ const FlipCard = ({
   backAriaLabel = 'Card back'
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const cardRef = useRef(null);
+
+  // Check for reduced motion preference
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+    
+    const handleMotionPreferenceChange = (e) => {
+      setPrefersReducedMotion(e.matches);
+    };
+    
+    mediaQuery.addEventListener('change', handleMotionPreferenceChange);
+    
+    return () => {
+      mediaQuery.removeEventListener('change', handleMotionPreferenceChange);
+    };
+  }, []);
 
   // Handle click event
   const handleClick = () => {
@@ -39,9 +58,14 @@ const FlipCard = ({
   
   // Handle keyboard events for accessibility
   const handleKeyDown = (e) => {
-    if (flipOnClick && (e.key === 'Enter' || e.key === ' ')) {
-      e.preventDefault();
-      setIsFlipped(!isFlipped);
+    if (flipOnClick) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setIsFlipped(!isFlipped);
+      } else if (e.key === 'Tab' && isFlipped && !e.shiftKey) {
+        // If tabbing forward on a flipped card, handle focus appropriately
+        handleFocusManagement(e);
+      }
     }
   };
   
@@ -50,6 +74,8 @@ const FlipCard = ({
     const handleEscape = (e) => {
       if (isFlipped && e.key === 'Escape') {
         setIsFlipped(false);
+        // Ensure focus returns to the card
+        cardRef.current?.focus();
       }
     };
     
@@ -58,10 +84,22 @@ const FlipCard = ({
       document.removeEventListener('keydown', handleEscape);
     };
   }, [isFlipped]);
+
+  // Focus management for keyboard users
+  const handleFocusManagement = (e) => {
+    // Implementation depends on the DOM structure inside the card
+    // This is a placeholder for custom focus logic if needed
+  };
   
   const cardStyle = {
     width: `${width}px`,
     height: `${height}px`,
+  };
+
+  const getTransitionStyles = () => {
+    return prefersReducedMotion 
+      ? { type: 'tween', duration: 0.2, ease: 'easeOut' }
+      : { type: 'spring', stiffness: 70, damping: 12 };
   };
 
   return (
@@ -75,8 +113,11 @@ const FlipCard = ({
       aria-pressed={flipOnClick ? isFlipped : undefined}
       ref={cardRef}
     >
-      <div 
-        className={`${styles.flipCardInner} ${isFlipped ? styles.flipped : ''}`}
+      <motion.div 
+        className={styles.flipCardInner}
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={getTransitionStyles()}
+        initial={false}
         aria-live="polite"
       >
         {/* Front */}
@@ -96,7 +137,7 @@ const FlipCard = ({
         >
           {backContent}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

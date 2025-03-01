@@ -2,7 +2,6 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Layout from '../components/layout/Layout';
 import AnimatedHero from '../components/sections/AnimatedHero';
-import { FaGraduationCap, FaHandsHelping, FaMicrophone, FaStore } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const TestimonialsSection = dynamic(() => import('../components/sections/TestimonialsSection'), { ssr: false });
@@ -97,50 +96,82 @@ export default function Home() {
         primaryCta="Explore Our Projects"
         primaryCtaLink="#projects"
         backgroundImage="/images/hero-bg.jpg"
+        overlayColor="linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(99, 102, 241, 0.8))"
       />
 
-      <section className="projects-section" id="projects">
+      <section 
+        className="projects-section py-20" 
+        id="projects"
+        style={{
+          background: 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
+          boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.05)'
+        }}
+      >
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="text-center mb-12"
           >
-            <FlipCardShowcase cards={projects} />
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              Our Innovative Projects
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Discover how our solutions are transforming industries and empowering communities.
+            </p>
           </motion.div>
+          <FlipCardShowcase cards={projects} />
         </div>
       </section>
 
-      <section className="testimonials-section" id="testimonials">
+      <section 
+        className="testimonials-section" 
+        id="testimonials"
+        style={{
+          background: 'linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%)',
+          paddingTop: '5rem',
+          paddingBottom: '5rem'
+        }}
+      >
         <TestimonialsSection
           title="Success Stories"
           subtitle="Real results from our satisfied clients and partners"
           testimonials={testimonials}
           displayMode="carousel"
           autoplaySpeed={7000}
-          bgColor="#f0f7ff"
+          bgColor="transparent"
           showProjectsButton={true}
         />
       </section>
 
       <motion.section 
-        className="cta-section"
+        className="cta-section py-24"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
+        style={{
+          background: 'linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%)',
+          boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)'
+        }}
       >
-        <div className="container mx-auto px-4 py-16 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Transform Your Ideas?</h2>
-          <p className="text-xl max-w-2xl mx-auto mb-8">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+            Ready to Transform Your Ideas?
+          </h2>
+          <p className="text-xl max-w-2xl mx-auto mb-8 text-blue-100">
             Contact us today to discuss how GeauxSpecialist can help bring your vision to life.
           </p>
           <motion.a 
             href="/contact" 
-            className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition duration-150 ease-in-out"
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-lg bg-white text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            style={{
+              boxShadow: '0 4px 14px rgba(0, 0, 0, 0.15)'
+            }}
           >
             Start Your Project
           </motion.a>

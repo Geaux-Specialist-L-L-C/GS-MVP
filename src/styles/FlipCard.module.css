@@ -2,13 +2,13 @@
   perspective: 1000px; /* Creates the 3D space for the flip effect */
   margin: 1rem;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .flipCardInner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform-style: preserve-3d;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
@@ -32,6 +32,7 @@
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* For Safari compatibility */
   border-radius: 0.5rem;
   overflow: hidden;
   display: flex;
@@ -79,6 +80,7 @@
 /* Additional hover effects */
 .flipCard:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
 
@@ -86,4 +88,25 @@
 .flipCardFront *,
 .flipCardBack * {
   max-width: 100%;
+}
+
+/* Fade animation for card content when flipping */
+.flipCardFront > *,
+.flipCardBack > * {
+  transition: opacity 0.15s ease-in-out;
+}
+
+/* Interactive elements inside cards */
+.flipCardBack a,
+.flipCardBack button {
+  position: relative;
+  z-index: 5;
+  transform: translateZ(20px); /* Brings interactive elements forward */
+}
+
+/* Better touch support for mobile */
+@media (pointer: coarse) {
+  .flipCard {
+    cursor: default;
+  }
 }
