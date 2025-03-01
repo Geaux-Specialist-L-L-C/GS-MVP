@@ -16,11 +16,16 @@ const Button = ({
   const sizeClasses = `btn-${size}`;
   const widthClasses = fullWidth ? 'btn-full' : '';
   
+  // Check if button should have flip effect
+  const hasFlipEffect = className.includes('hover-flip-card');
+  const flipClass = hasFlipEffect ? 'flip-card-effect' : '';
+  
   const buttonClasses = [
     baseClasses, 
     variantClasses, 
     sizeClasses, 
     widthClasses,
+    flipClass,
     className
   ].join(' ').trim();
   

@@ -23,11 +23,12 @@ const Hero = ({
           {title && <h1 className="hero-title">{title}</h1>}
           {subtitle && <p className="hero-subtitle">{subtitle}</p>}
           
-          <div className="hero-cta">
+          <div className="hero-cta flex justify-center">
             <Button 
               variant="primary" 
               size="large" 
               onClick={() => window.location.href = ctaLink}
+              className="hover-flip-card"
             >
               {ctaText}
             </Button>
