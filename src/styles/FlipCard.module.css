@@ -1,49 +1,69 @@
 .flipCard {
-  perspective: 1000px;
-  position: relative;
-  margin: 0 auto;
-}
-
-.flipCard:hover .flipCardInner:not(.flipped) {
-  transform: rotateY(180deg);
+  perspective: 1000px; /* Creates the 3D space for the flip effect */
+  margin: 1rem;
+  cursor: pointer;
 }
 
 .flipCardInner {
   position: relative;
   width: 100%;
   height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
+  transition: transform 0.8s ease;
   transform-style: preserve-3d;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  border-radius: 8px;
 }
 
-.flipped {
+/* Flip on hover if not using click mode */
+.flipCard:hover .flipCardInner:not(.flipped) {
   transform: rotateY(180deg);
 }
 
-.flipCardFront, .flipCardBack {
+/* Flipped state when using click mode */
+.flipCardInner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flipCardFront,
+.flipCardBack {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .flipCardFront {
-  background-color: #fff;
-  color: #333;
+  background-color: #ffffff;
+  color: #2d3748;
+  z-index: 2;
 }
 
 .flipCardBack {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: #2563eb; /* Primary blue color */
+  color: #ffffff;
   transform: rotateY(180deg);
+}
+
+/* For focus and accessibility */
+.flipCard:focus {
+  outline: 2px solid #3182ce;
+}
+
+/* Animation improvements */
+@media (prefers-reduced-motion: reduce) {
+  .flipCardInner {
+    transition: transform 0.3s ease;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .flipCard {
+    margin: 0.5rem;
+  }
 }

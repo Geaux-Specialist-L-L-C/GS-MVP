@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styles from './FlipCard.module.css';
+import styles from '../../styles/FlipCard.module.css';
 
 /**
  * FlipCard Component
