@@ -1,199 +1,155 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Layout from '../components/layout/Layout';
-import AnimatedHero from '../components/sections/AnimatedHero';
 import FlipCardShowcase from '../components/sections/FlipCardShowcase';
+import { FaGraduationCap, FaHandsHelping, FaHistory, FaStore, FaChartLine } from 'react-icons/fa';
 import styles from '../styles/ProjectsPage.module.css';
 
 /**
- * Projects Overview Page
+ * Projects Page
  * 
- * A comprehensive showcase of all Geaux Specialist LLC projects with
- * interactive elements and detailed information.
+ * A showcase page displaying all Geaux Specialist projects using the 
+ * enhanced FlipCardShowcase component with filtering capabilities.
  */
 const ProjectsPage = () => {
-  // Animation variants for staggered text animations
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, ease: "easeOut" } 
-    }
-  };
-  
-  // Project development process steps
-  const developmentProcess = [
+  // Define project categories for filtering
+  const projectCategories = [
+    'Education',
+    'Technology',
+    'Creative',
+    'Legacy',
+    'Business'
+  ];
+
+  // Project data with categories for filtering
+  const projectCards = [
     {
-      title: "Discovery & Research",
-      description: "We begin with in-depth research to understand the problem space, target audience, and existing solutions.",
-      icon: "🔍"
+      id: 'geaux-academy',
+      title: 'Geaux Academy',
+      subtitle: 'AI-Driven Learning Platform',
+      description: 'An innovative educational platform that uses AI to personalize learning experiences and adapt to individual student needs.',
+      link: '/projects/geaux-academy',
+      linkText: 'Explore Platform',
+      backgroundColor: '#e0f2fe',
+      accentColor: '#0284c7',
+      categories: ['Education', 'Technology'],
+      icon: <FaGraduationCap size={32} />,
+      backgroundImage: '/images/projects/geaux-academy-card-bg.jpg'
     },
     {
-      title: "Planning & Design",
-      description: "Collaborative design thinking sessions lead to prototypes that are validated through user testing.",
-      icon: "📐"
+      id: 'geaux-helped',
+      title: 'Geaux HelpED',
+      subtitle: 'Educational Support Resources',
+      description: 'Comprehensive educational support resources providing students with the tools they need to excel in school and beyond.',
+      link: '/projects/geaux-helped',
+      linkText: 'Get Support',
+      backgroundColor: '#dcfce7',
+      accentColor: '#059669',
+      categories: ['Education', 'Business'],
+      icon: <FaHandsHelping size={32} />
     },
     {
-      title: "Development",
-      description: "Using agile methodologies, we build the solution with continuous integration and automated testing.",
-      icon: "💻"
+      id: 'reanimated-echos',
+      title: 'ReanimatED Echos',
+      subtitle: 'Legacy Preservation Technology',
+      description: 'AI-powered legacy preservation technology that transforms personal narratives and photos into interactive voice-enhanced stories.',
+      link: '/projects/reanimated-echos',
+      linkText: 'Preserve Memories',
+      backgroundColor: '#f1f5f9',
+      accentColor: '#475569',
+      categories: ['Technology', 'Legacy'],
+      icon: <FaHistory size={32} />
     },
     {
-      title: "Testing & Refinement",
-      description: "Comprehensive QA testing ensures the product meets all functional and performance requirements.",
-      icon: "🧪"
+      id: 'geaux-emporium',
+      title: 'Geaux Emporium',
+      subtitle: 'Creative Marketplace Platform',
+      description: 'A specialized marketplace platform that connects unique makers with enthusiastic buyers through innovative e-commerce solutions.',
+      link: '/projects/geaux-emporium',
+      linkText: 'Visit Marketplace',
+      backgroundColor: '#fef3c7',
+      accentColor: '#d97706',
+      categories: ['Creative', 'Business'],
+      icon: <FaStore size={32} />
     },
     {
-      title: "Deployment",
-      description: "Controlled launch with close monitoring of performance and user feedback to ensure success.",
-      icon: "🚀"
-    },
-    {
-      title: "Support & Evolution",
-      description: "Ongoing maintenance and feature enhancement based on analytics and user feedback.",
-      icon: "⚙️"
+      id: 'seo-geaux',
+      title: 'SEO Geaux',
+      subtitle: 'Digital Growth Strategies',
+      description: 'Comprehensive digital marketing and SEO services that help businesses improve their online visibility and attract qualified leads.',
+      link: '/contact?project=seo-geaux',
+      linkText: 'Boost Your Visibility',
+      backgroundColor: '#ddd6fe',
+      accentColor: '#7c3aed',
+      categories: ['Business', 'Technology'],
+      icon: <FaChartLine size={32} />
     }
   ];
 
   return (
     <Layout 
-      title="Our Projects" 
-      description="Explore the innovative projects at Geaux Specialist LLC, including Geaux Academy, Geaux HelpED, ReanimatED Echos, and Geaux Emporium."
-      keywords="educational platform, healthcare management, voice processing, e-commerce, innovation"
+      title="Our Projects | GeauxSpecialist"
+      description="Explore our diverse portfolio of projects including Geaux Academy, Geaux HelpED, ReanimatED Echos, and more."
+      keywords="projects, portfolio, Geaux Academy, Geaux HelpED, ReanimatED Echos, Geaux Emporium, SEO Geaux"
       canonical="/projects"
     >
-      <AnimatedHero 
-        title="Our Projects"
-        subtitle="Discover how Geaux Specialist is transforming industries through innovation and technology."
-        primaryCta="Explore Below"
-        primaryCtaLink="#projects-showcase"
-        secondaryCta="Contact Us"
-        secondaryCtaLink="/contact"
-        backgroundImage="/images/hero-background.jpg"
-        overlayColor="rgba(0, 0, 0, 0.7)"
-      />
-      
-      <section className={styles.introSection}>
+      <section className={styles.heroSection}>
         <div className="container">
           <motion.div 
-            className={styles.introContent}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.2
-                }
-              }
-            }}
+            className={styles.heroContent}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <motion.h2 
-              className={styles.sectionTitle}
-              variants={textVariants}
-            >
-              Innovative Solutions for Modern Challenges
-            </motion.h2>
-            
-            <motion.p 
-              className={styles.sectionText}
-              variants={textVariants}
-            >
-              At Geaux Specialist LLC, we develop cutting-edge solutions across education, healthcare, technology, 
-              and e-commerce. Our mission is to empower communities through innovation that makes a measurable impact.
-            </motion.p>
-            
-            <motion.p 
-              className={styles.sectionText}
-              variants={textVariants}
-            >
-              Each of our projects addresses specific challenges in its domain, leveraging the latest technologies and 
-              research to deliver exceptional results. Explore our project portfolio below to learn more about how 
-              we're making a difference.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-      
-      <div id="projects-showcase">
-        <FlipCardShowcase />
-      </div>
-      
-      <section className={styles.processBg}>
-        <div className="container">
-          <motion.div 
-            className={styles.processSection}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className={styles.processTitle}>Our Development Approach</h2>
-            <p className={styles.processSubtitle}>
-              We follow a rigorous methodology to ensure every project delivers maximum value
+            <h1 className={styles.heroTitle}>
+              Our Projects
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Discover how our innovative solutions are making an impact across industries
             </p>
-            
-            <motion.div 
-              className={styles.processGrid}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.15 }
-                }
-              }}
-            >
-              {developmentProcess.map((step, index) => (
-                <motion.div 
-                  key={index} 
-                  className={styles.processCard}
-                  variants={{
-                    hidden: { opacity: 0, y: 20 },
-                    visible: { 
-                      opacity: 1, 
-                      y: 0,
-                      transition: { duration: 0.5 }
-                    }
-                  }}
-                  whileHover={{ y: -10, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
-                >
-                  <div className={styles.processIcon}>{step.icon}</div>
-                  <h3 className={styles.processStepTitle}>{step.title}</h3>
-                  <p className={styles.processStepDesc}>{step.description}</p>
-                </motion.div>
-              ))}
-            </motion.div>
           </motion.div>
         </div>
       </section>
-      
-      <section className={styles.projectsCta}>
+
+      {/* Projects Showcase using FlipCardShowcase with filtering */}
+      <FlipCardShowcase
+        title="Innovative Solutions"
+        subtitle="Filter by category to explore our diverse portfolio of projects"
+        cards={projectCards}
+        categories={projectCategories}
+        enableFiltering={true}
+        viewAllLink={null} // Hide "View All" since we're already on the projects page
+      />
+
+      <section className={styles.contactCta}>
         <div className="container">
           <motion.div 
             className={styles.ctaContent}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className={styles.ctaTitle}>Have a Project in Mind?</h2>
+            <h2 className={styles.ctaTitle}>Ready to Start Your Project?</h2>
             <p className={styles.ctaText}>
-              Our team of specialists is ready to help you transform your ideas into reality. 
-              Whether you're looking to digitalize your business, create innovative educational tools,
-              or develop healthcare solutions, we have the expertise to make it happen.
+              Contact us today to discuss how our team can help bring your ideas to life with 
+              innovative technology solutions tailored to your needs.
             </p>
             <motion.div 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className={styles.ctaButtons}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <a href="/contact" className={styles.ctaLink}>
-                Let's Work Together
+              <a href="/contact" className={styles.primaryButton}>
+                Contact Us
+              </a>
+              <a href="#" className={styles.secondaryButton} onClick={(e) => {
+                e.preventDefault();
+                document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+              }}>
+                Browse Projects
               </a>
             </motion.div>
           </motion.div>

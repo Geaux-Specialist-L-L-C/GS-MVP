@@ -20,6 +20,46 @@
   color: #64748b;
 }
 
+/* Filter styles */
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.filterButton {
+  background-color: transparent;
+  border: 2px solid #e2e8f0;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterButton:hover {
+  border-color: #cbd5e1;
+  color: #475569;
+  transform: translateY(-2px);
+}
+
+.activeFilter {
+  background-color: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.activeFilter:hover {
+  background-color: #1d4ed8;
+  color: white;
+  border-color: #1d4ed8;
+}
+
+/* Card grid */
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -45,6 +85,12 @@
   width: 100%;
   background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9));
   position: relative;
+}
+
+.cardIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
+  color: #2563eb;
 }
 
 .cardTitle {
@@ -174,6 +220,10 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
   }
+  
+  .filterContainer {
+    margin-bottom: 2rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -192,5 +242,20 @@
   
   .cardTitle {
     font-size: 1.25rem;
+  }
+  
+  .filterContainer {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .filterButton {
+    width: 100%;
+    padding: 0.5rem 0;
+    text-align: center;
   }
 }

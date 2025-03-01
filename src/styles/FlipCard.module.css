@@ -1,112 +1,134 @@
+/* 
+ * FlipCard Component Styles
+ * 
+ * CSS for a 3D flip card component with front and back sides.
+ * Includes styles for hover/click animations, focus states,
+ * and accessibility considerations.
+ */
+
 .flipCard {
-  perspective: 1000px; /* Creates the 3D space for the flip effect */
-  margin: 1rem;
+  perspective: 1000px;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+  position: relative;
+}
+
+.flipCard:focus-visible {
+  outline: 3px solid #2563eb;
+  border-radius: 8px;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
 }
 
 .flipCardInner {
   position: relative;
   width: 100%;
   height: 100%;
+  text-align: center;
   transform-style: preserve-3d;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 0.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  will-change: transform;
 }
 
-/* Flip on hover if not using click mode */
-.flipCard:hover .flipCardInner:not(.flipped) {
-  transform: rotateY(180deg);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Flipped state when using click mode */
-.flipCardInner.flipped {
-  transform: rotateY(180deg);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
+/* Common styles for both front and back */
 .flipCardFront,
 .flipCardBack {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden; /* For Safari compatibility */
-  border-radius: 0.5rem;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  padding: 1rem;
+  align-items: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
 }
 
+/* Front styling */
 .flipCardFront {
-  background-color: #ffffff;
-  color: #2d3748;
+  background-color: #f8fafc;
+  color: #0f172a;
+  border: 1px solid rgba(226, 232, 240, 0.8);
   z-index: 2;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(248, 250, 252, 0.6));
 }
 
+/* Back styling */
 .flipCardBack {
-  background-color: #2563eb; /* Primary blue color */
-  color: #ffffff;
+  background-color: #2563eb;
+  color: white;
   transform: rotateY(180deg);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(135deg, #2563eb, #1d4ed8);
+  z-index: 1;
 }
 
-/* For focus and accessibility */
-.flipCard:focus {
-  outline: none;
+/* Gradient overlay for improved text contrast */
+.flipCardFront::after,
+.flipCardBack::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
 }
 
-.flipCard:focus .flipCardInner {
-  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.5);
+.flipCardFront::after {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));
 }
 
-/* Animation improvements */
+.flipCardBack::after {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+}
+
+/* Card inner shadow effect */
+.flipCard::before {
+  content: '';
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.flipCard:hover::before {
+  opacity: 1;
+}
+
+/* Hover effect for flip */
+@media (hover: hover) and (pointer: fine) {
+  .flipCard:not([role="button"]):hover .flipCardInner {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Reduce motion when user has set that preference */
 @media (prefers-reduced-motion: reduce) {
   .flipCardInner {
-    transition: transform 0.3s ease;
+    transition-duration: 0.1s;
   }
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .flipCard {
-    margin: 0.5rem;
+    max-width: 100%;
   }
 }
 
-/* Additional hover effects */
-.flipCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-/* Ensure content remains readable */
-.flipCardFront *,
-.flipCardBack * {
-  max-width: 100%;
-}
-
-/* Fade animation for card content when flipping */
-.flipCardFront > *,
-.flipCardBack > * {
-  transition: opacity 0.15s ease-in-out;
-}
-
-/* Interactive elements inside cards */
-.flipCardBack a,
-.flipCardBack button {
-  position: relative;
-  z-index: 5;
-  transform: translateZ(20px); /* Brings interactive elements forward */
-}
-
-/* Better touch support for mobile */
-@media (pointer: coarse) {
-  .flipCard {
-    cursor: default;
-  }
+/* Focus visible styles for accessibility */
+.flipCard:focus-visible .flipCardInner {
+  box-shadow: 0 0 0 3px #3b82f6, 0 8px 16px rgba(0, 0, 0, 0.1);
 }
