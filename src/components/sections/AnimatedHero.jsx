@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Button from '../ui/Button';
+import Link from 'next/link';
 import styles from '../../styles/AnimatedHero.module.css';
 
 /**
@@ -47,8 +47,8 @@ const AnimatedHero = ({
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3,
         duration: 0.8,
+        ease: "easeOut"
       }
     }
   };
@@ -60,7 +60,7 @@ const AnimatedHero = ({
       opacity: 1, 
       transition: { 
         duration: 0.7,
-        ease: [0.6, 0.05, -0.01, 0.9]
+        ease: "easeOut"
       } 
     }
   };
@@ -72,8 +72,26 @@ const AnimatedHero = ({
       opacity: 1, 
       transition: { 
         duration: 0.7,
-        ease: [0.6, 0.05, -0.01, 0.9]
+        ease: "easeOut"
       } 
+    }
+  };
+
+  const buttonVariants = {
+    initial: { scale: 1 },
+    hover: { 
+      scale: 1.05,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    },
+    tap: { 
+      scale: 0.95,
+      transition: {
+        duration: 0.1,
+        ease: "easeInOut"
+      }
     }
   };
   
@@ -119,23 +137,32 @@ const AnimatedHero = ({
             className={styles.ctaContainer}
             variants={itemVariants}
           >
-            <Button 
-              variant="primary" 
-              size="large" 
-              onClick={() => window.location.href = primaryCtaLink}
-            >
-              {primaryCta}
-            </Button>
-            
+            {primaryCta && (
+              <Link href={primaryCtaLink || '#'} legacyBehavior>
+                <motion.a 
+                  className={`${styles.button} ${styles.primaryButton}`}
+                  variants={buttonVariants}
+                  initial="initial"
+                  whileHover="hover"
+                  whileTap="tap"
+                >
+                  {primaryCta}
+                </motion.a>
+              </Link>
+            )}
+
             {secondaryCta && (
-              <Button 
-                variant="outline" 
-                size="large" 
-                onClick={() => window.location.href = secondaryCtaLink}
-                className={styles.secondaryBtn}
-              >
-                {secondaryCta}
-              </Button>
+              <Link href={secondaryCtaLink || '#'} legacyBehavior>
+                <motion.a 
+                  className={`${styles.button} ${styles.secondaryButton}`}
+                  variants={buttonVariants}
+                  initial="initial"
+                  whileHover="hover"
+                  whileTap="tap"
+                >
+                  {secondaryCta}
+                </motion.a>
+              </Link>
             )}
           </motion.div>
         </motion.div>

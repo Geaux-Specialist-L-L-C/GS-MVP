@@ -2,7 +2,6 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import Layout from '../components/layout/Layout';
 import AnimatedHero from '../components/sections/AnimatedHero';
-import Button from '../components/ui/Button';
 import { FaGraduationCap, FaHandsHelping, FaMicrophone, FaStore } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
@@ -100,27 +99,6 @@ export default function Home() {
         backgroundImage="/images/hero-bg.jpg"
       />
 
-      <section className="intro-section" id="intro">
-        <div className="container mx-auto px-4">
-          <div className="py-16">
-            <motion.div 
-              className="text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl font-bold mb-6">Empowering Communities Through Innovation</h2>
-              <p className="max-w-3xl mx-auto text-lg text-gray-600">
-                At Geaux Specialist LLC, we create transformative solutions that address real-world challenges in education, 
-                healthcare, and beyond. Our mission is to harness the power of technology to make a meaningful impact 
-                on communities across the globe.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       <section className="projects-section" id="projects">
         <div className="container mx-auto px-4">
           <motion.div
@@ -129,10 +107,6 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold text-center mb-6">Our Projects</h2>
-            <p className="text-xl text-gray-600 text-center mb-12">
-              Discover the innovative solutions from Geaux Specialist LLC
-            </p>
             <FlipCardShowcase cards={projects} />
           </motion.div>
         </div>
@@ -162,13 +136,14 @@ export default function Home() {
           <p className="text-xl max-w-2xl mx-auto mb-8">
             Contact us today to discuss how GeauxSpecialist can help bring your vision to life.
           </p>
-          <Button 
-            variant="primary" 
-            size="large"
-            onClick={() => window.location.href = '/contact'}
+          <motion.a 
+            href="/contact" 
+            className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition duration-150 ease-in-out"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Start Your Project
-          </Button>
+          </motion.a>
         </div>
       </motion.section>
     </Layout>
