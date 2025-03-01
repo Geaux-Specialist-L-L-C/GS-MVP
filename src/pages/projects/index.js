@@ -3,6 +3,7 @@ import Layout from '../../components/layout/Layout';
 import Head from 'next/head';
 import Link from 'next/link';
 import Button from '../../components/ui/Button';
+import FlipCard from '../../components/ui/FlipCard';
 
 const ProjectsPage = () => {
   const projects = [
@@ -41,7 +42,6 @@ const ProjectsPage = () => {
       title: 'Geaux Emporium',
       description: 'Specialized healthcare educational resources and materials marketplace connecting suppliers with educational institutions.',
       image: '/images/projects/geaux-emporium.jpg',
-      detailDescription: 'An online marketplace that connects suppliers of specialized healthcare educational resources with schools, universities, and training facilities.',
       keyFeatures: ['Supplier management', 'Inventory tracking', 'Secure payments', 'Order fulfillment'],
       technologies: ['Next.js', 'Stripe', 'Firebase', 'Material UI'],
       link: '/projects/geaux-emporium'
