@@ -29,10 +29,11 @@ module.exports = {
     '^@/pages/(.*)$': '<rootDir>/pages/$1',
     '^@/styles/(.*)$': '<rootDir>/styles/$1',
     '^@/utils/(.*)$': '<rootDir>/utils/$1',
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
   transform: {
     // Use babel-jest to transpile tests with the next/babel preset
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
   },
   transformIgnorePatterns: [
     '/node_modules/',

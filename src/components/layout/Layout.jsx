@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import Navigation from './Navigation';
 import Footer from './Footer';
+import { initGA, logPageView } from '../../lib/analytics';
 import styles from '../../styles/Layout.module.css';
 
 const Layout = ({ 
@@ -14,6 +16,16 @@ const Layout = ({
 }) => {
   const siteUrl = 'https://www.geauxspecialist.com';
   const pageUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
+  const router = useRouter();
+
+  useEffect(() => {
+    initGA();
+    logPageView();
+    router.events.on('routeChangeComplete', logPageView);
+    return () => {
+      router.events.off('routeChangeComplete', logPageView);
+    };
+  }, [router.events]);
   
   return (
     <div className={styles.container}>

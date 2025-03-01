@@ -4,9 +4,26 @@ import Hero from '../components/sections/Hero';
 import FeaturesSection from '../components/sections/FeaturesSection';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import FlipCardShowcase from '../components/sections/FlipCardShowcase';
+import BlogSection from '../components/sections/BlogSection';
 import { FaGraduationCap, FaHandsHelping, FaHistory, FaStore, FaChartLine } from 'react-icons/fa';
+import { fetchEntries } from '../lib/contentful';
 
-export default function Home() {
+export async function getStaticProps() {
+  const blogPosts = await fetchEntries('blogPost');
+
+  return {
+    props: {
+      blogPosts: blogPosts.map((post) => ({
+        title: post.fields.title,
+        excerpt: post.fields.excerpt,
+        image: post.fields.image.fields.file.url,
+        link: `/blog/${post.fields.slug}`,
+      })),
+    },
+  };
+}
+
+const HomePage = ({ blogPosts }) => {
   // Featured projects for the homepage
   const featuredProjects = [
     {
@@ -104,6 +121,13 @@ export default function Home() {
         autoplaySpeed={5000}
         showProjectsButton={true}
       />
+      
+      <BlogSection 
+        title="Latest News"
+        posts={blogPosts}
+      />
     </Layout>
   );
-}
+};
+
+export default HomePage;
