@@ -78,9 +78,6 @@ jobs:
     if: github.ref == 'refs/heads/develop'
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: staging
-      url: https://staging.geauxspecialist.com
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -99,24 +96,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Deploy to Vercel (Staging)
-        uses: amondnet/vercel-action@v20
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          scope: ${{ secrets.VERCEL_ORG_ID }}
-          alias-domains: |
-            staging.geauxspecialist.com
+      - name: Deploy to Netlify (Staging)
+        run: |
+          npm install -g netlify-cli
+          netlify deploy --dir=.next --prod
 
   deploy-production:
     name: Deploy to Production
     if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: production
-      url: https://geauxspecialist.com
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -135,14 +124,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Deploy to Vercel (Production)
-        uses: amondnet/vercel-action@v20
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          scope: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-args: '--prod'
-          alias-domains: |
-            geauxspecialist.com
-            www.geauxspecialist.com
+      - name: Deploy to Netlify (Production)
+        run: |
+          npm install -g netlify-cli
+          netlify deploy --dir=.next --prod
