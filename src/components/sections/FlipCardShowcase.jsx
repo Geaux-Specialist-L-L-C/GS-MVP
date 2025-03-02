@@ -1,120 +1,178 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import FlipCard from '../ui/FlipCard';
 import styles from '../../styles/FlipCardShowcase.module.css';
 
 /**
- * FlipCardShowcase
+ * FlipCardShowcase Component
  * 
- * A demonstration component that displays multiple FlipCard components
- * in a grid layout, showcasing different projects under Geaux Specialist LLC.
+ * A showcase section that displays multiple FlipCard components in a grid layout
+ * with optional filtering functionality.
+ * 
+ * @param {Object} props Component props
+ * @param {string} props.title - Section title
+ * @param {string} props.subtitle - Section subtitle
+ * @param {Array} props.cards - Array of card data objects
+ * @param {Array} props.categories - Array of category names for filtering (optional)
+ * @param {boolean} props.enableFiltering - Whether to show filtering options (default: false)
+ * @param {string} props.viewAllLink - URL for "View All" button (optional, pass null to hide)
  */
-const FlipCardShowcase = () => {
-  // Content for the project cards with comprehensive descriptions
-  const projectCards = [
-    {
-      id: 0,
-      front: {
-        title: 'Geaux Specialist LLC',
-        subtitle: 'Parent Company',
-      },
-      back: {
-        description: 'The innovative force behind our diverse portfolio of projects. We harness advanced technology and creative strategies to deliver personalized solutions that make a meaningful impact.',
-        ctaText: 'About Us',
-        ctaLink: '/about',
-      },
+const FlipCardShowcase = ({ 
+  title, 
+  subtitle, 
+  cards, 
+  categories = [],
+  enableFiltering = false,
+  viewAllLink = '/projects' 
+}) => {
+  // State for active filter category
+  const [activeFilter, setActiveFilter] = useState('All');
+  // State for filtered cards
+  const [filteredCards, setFilteredCards] = useState(cards);
+  
+  // Filter cards when the active filter changes
+  useEffect(() => {
+    if (activeFilter === 'All') {
+      setFilteredCards(cards);
+    } else {
+      const filtered = cards.filter(card => 
+        card.categories && card.categories.includes(activeFilter)
+      );
+      setFilteredCards(filtered);
+    }
+  }, [activeFilter, cards]);
+  
+  // Animation variants for staggered card animations
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+  
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
     },
-    {
-      id: 1,
-      front: {
-        title: 'Geaux Academy',
-        subtitle: 'AI-Driven Educational Platform',
-      },
-      back: {
-        description: 'Revolutionizing K-12 education with personalized learning experiences. Our platform leverages OpenAI's GPT to develop custom curricula that adapt to each student's unique learning style.',
-        ctaText: 'Learn More',
-        ctaLink: '/projects/geaux-academy',
-      },
-    },
-    {
-      id: 2,
-      front: {
-        title: 'Geaux HelpED',
-        subtitle: 'Educational Support Resources',
-      },
-      back: {
-        description: 'Providing essential educational support with on-demand tutoring, step-by-step guides, interactive learning tools, and a comprehensive resource library for students of all levels.',
-        ctaText: 'Discover',
-        ctaLink: '/projects/geaux-helped',
-      },
-    },
-    {
-      id: 3,
-      front: {
-        title: 'ReanimatED Echos',
-        subtitle: 'Legacy Preservation Technology',
-      },
-      back: {
-        description: 'Bringing cherished memories to life through AI-powered digital preservation. Transform photos, documents, and personal narratives into interactive, voice-enhanced stories.',
-        ctaText: 'Explore',
-        ctaLink: '/projects/reanimated-echos',
-      },
-    },
-    {
-      id: 4,
-      front: {
-        title: 'SEO Geaux',
-        subtitle: 'Digital Growth Strategies',
-      },
-      back: {
-        description: 'Strategic solutions for enhancing online visibility with tailored SEO strategies covering keyword research, content marketing, and performance analytics to drive sustainable online success.',
-        ctaText: 'Optimize',
-        ctaLink: '/projects/seo-geaux',
-      },
-    },
-    {
-      id: 5,
-      front: {
-        title: 'Geaux Emporium',
-        subtitle: 'Creative Marketplace Platform',
-      },
-      back: {
-        description: 'An innovative online marketplace showcasing educational materials to handcrafted items. Supporting creative entrepreneurs and discerning consumers with secure transactions.',
-        ctaText: 'Shop Now',
-        ctaLink: '/projects/geaux-emporium',
-      },
-    },
-  ];
-
+    exit: { 
+      opacity: 0,
+      y: -20,
+      transition: { duration: 0.3 }
+    }
+  };
+  
   return (
     <section className={styles.showcase}>
       <div className="container">
-        <h2 className={styles.title}>Our Projects</h2>
-        <p className={styles.subtitle}>Discover the innovative solutions from Geaux Specialist LLC</p>
-
-        <div className={styles.cardsGrid}>
-          {projectCards.map((card) => (
-            <FlipCard
-              key={card.id}
-              frontContent={
-                <div className={styles.cardFront}>
-                  <h3 className={styles.cardTitle}>{card.front.title}</h3>
-                  <p className={styles.cardSubtitle}>{card.front.subtitle}</p>
-                </div>
-              }
-              backContent={
-                <div className={styles.cardBack}>
-                  <p className={styles.cardDescription}>{card.back.description}</p>
-                  <a href={card.back.ctaLink} className={styles.cardCta}>
-                    {card.back.ctaText}
-                  </a>
-                </div>
-              }
-              flipOnClick={true}
-              width={280}
-              height={220}
-            />
-          ))}
-        </div>
+        {title && <h2 className={styles.title}>{title}</h2>}
+        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+        
+        {/* Filter buttons - shown only if enableFiltering is true and categories are provided */}
+        {enableFiltering && categories.length > 0 && (
+          <motion.div 
+            className={styles.filterContainer}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <button
+              className={`${styles.filterButton} ${activeFilter === 'All' ? styles.activeFilter : ''}`}
+              onClick={() => setActiveFilter('All')}
+            >
+              All Projects
+            </button>
+            
+            {categories.map((category, index) => (
+              <button
+                key={index}
+                className={`${styles.filterButton} ${activeFilter === category ? styles.activeFilter : ''}`}
+                onClick={() => setActiveFilter(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </motion.div>
+        )}
+        
+        {/* Cards grid with animation */}
+        <motion.div 
+          className={styles.cardsGrid}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          <AnimatePresence>
+            {filteredCards.length > 0 ? (
+              filteredCards.map((card, index) => (
+                <motion.div 
+                  key={card.id || index} 
+                  className={styles.cardWrapper}
+                  variants={cardVariants}
+                  layout
+                  exit="exit"
+                >
+                  <FlipCard
+                    frontContent={
+                      <div className={styles.cardFront} style={{
+                        backgroundColor: card.backgroundColor || '#f8fafc'
+                      }}>
+                        {card.icon && <div className={styles.cardIcon} style={{
+                          color: card.accentColor || '#2563eb'
+                        }}>{card.icon}</div>}
+                        <h3 className={styles.cardTitle}>{card.title}</h3>
+                        <p className={styles.cardSubtitle}>{card.subtitle}</p>
+                        <div className={styles.flipPrompt}>
+                          <span className={styles.flipIcon}>↗</span>
+                          Flip for details
+                        </div>
+                      </div>
+                    }
+                    backContent={
+                      <div className={styles.cardBack} style={{
+                        backgroundColor: card.accentColor || '#2563eb',
+                        color: 'white'
+                      }}>
+                        <p className={styles.cardDescription}>{card.description}</p>
+                        <a href={card.link} className={styles.cardCta}>{card.linkText || 'Learn More'}</a>
+                      </div>
+                    }
+                    backgroundImage={card.backgroundImage}
+                  />
+                </motion.div>
+              ))
+            ) : (
+              <motion.div 
+                className={styles.noResults}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <p>No projects found in the "{activeFilter}" category.</p>
+                <button 
+                  className={styles.filterButton} 
+                  onClick={() => setActiveFilter('All')}
+                  style={{ marginTop: '1rem' }}
+                >
+                  Show All Projects
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+        
+        {/* Optional "View All" link */}
+        {viewAllLink && (
+          <div className={styles.showcaseFooter}>
+            <a href={viewAllLink} className={styles.viewAllLink}>View All Projects</a>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -1,0 +1,190 @@
+/* AboutPage.module.css */
+
+/* Hero Section */
+.heroSection {
+  padding: 5rem 0;
+  background-color: #f8fafc;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+}
+
+/* Company Overview Section */
+.companyOverview {
+  padding: 5rem 0;
+  background-color: #ffffff;
+}
+
+.overviewContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.sectionText {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+/* Mission Section */
+.missionSection {
+  padding: 5rem 0;
+  background-color: #f8fafc;
+}
+
+.missionContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Team Section */
+.teamSection {
+  padding: 5rem 0;
+  background-color: #ffffff;
+}
+
+.teamContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.teamMember {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.teamMember:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.teamMemberImage {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.teamMemberName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.teamMemberRole {
+  font-size: 1rem;
+  color: #64748b;
+}
+
+/* Contact Section */
+.contactSection {
+  padding: 5rem 0;
+  background-color: #f8fafc;
+}
+
+.contactContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.contactItem {
+  margin-bottom: 1.5rem;
+}
+
+.contactTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.contactText {
+  font-size: 1rem;
+  color: #64748b;
+}
+
+.contactText a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.contactText a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+  
+  .sectionText {
+    font-size: 1rem;
+  }
+  
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+  
+  .sectionText {
+    font-size: 0.875rem;
+  }
+}

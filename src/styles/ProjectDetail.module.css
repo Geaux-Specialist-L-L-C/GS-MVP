@@ -1,0 +1,454 @@
+/* Project Detail Page Styles */
+
+/* Overview Section */
+.overview {
+  padding: 5rem 0;
+  background-color: #ffffff;
+}
+
+.overviewContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.overviewText {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4b5563;
+}
+
+.overviewText p {
+  margin-bottom: 1.5rem;
+}
+
+/* Features Section */
+.features {
+  padding: 5rem 0;
+  background-color: #f8fafc;
+}
+
+.sectionSubtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.featureCard {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.featureIconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: rgba(37, 99, 235, 0.1);
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+}
+
+.featureIcon {
+  color: #2563eb;
+}
+
+.featureTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.featureDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #6b7280;
+  flex-grow: 1;
+}
+
+/* Benefits Section */
+.benefits {
+  padding: 5rem 0;
+  background-color: #ffffff;
+}
+
+.benefitsContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.benefitsContent {
+  padding-right: 2rem;
+}
+
+.benefitsIntro {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
+
+.benefitsList {
+  list-style-type: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  font-size: 1.125rem;
+}
+
+.benefitIcon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-color: #10b981;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.benefitText {
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.ctaWrapper {
+  margin-top: 2.5rem;
+}
+
+.ctaButton {
+  display: inline-block;
+  background-color: #2563eb;
+  color: white;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.technologiesContainer {
+  background-color: #f8fafc;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  height: fit-content;
+}
+
+.technologiesTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+.technologiesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.technologyBadge {
+  display: inline-block;
+  background-color: #e5e7eb;
+  color: #4b5563;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 0.875rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.technologyBadge:hover {
+  background-color: #2563eb;
+  color: white;
+}
+
+/* Case Study Section */
+.caseStudy {
+  padding: 5rem 0;
+  background-color: #f8fafc;
+}
+
+.caseStudyContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.caseStudyContent {
+  padding: 3rem;
+}
+
+.caseStudyTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.caseStudySubtitle {
+  font-size: 1.25rem;
+  color: #2563eb;
+  margin-bottom: 1.5rem;
+}
+
+.caseStudyText {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
+
+.caseStudyQuote {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: #1e293b;
+  padding-left: 1.5rem;
+  border-left: 4px solid #2563eb;
+  margin: 2rem 0;
+  line-height: 1.8;
+}
+
+.caseStudyAuthor {
+  font-size: 1rem;
+  color: #6b7280;
+  text-align: right;
+}
+
+.caseStudyResults {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: #f1f5f9;
+}
+
+.resultCard {
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.resultCard:hover {
+  background-color: #2563eb;
+}
+
+.resultCard:hover .resultValue,
+.resultCard:hover .resultLabel {
+  color: white;
+}
+
+.resultValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.resultLabel {
+  font-size: 0.875rem;
+  color: #6b7280;
+  transition: color 0.3s ease;
+}
+
+/* Contact Section */
+.contact {
+  padding: 5rem 0;
+  background-color: #1e293b;
+  color: white;
+}
+
+.contactContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contactTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.contactText {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.contactButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.contactButton {
+  display: inline-block;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+}
+
+.primaryButton {
+  background-color: #3b82f6;
+  color: white;
+  border: 2px solid #3b82f6;
+}
+
+.primaryButton:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+.secondaryButton {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.secondaryButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .benefitsContainer {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .benefitsContent {
+    padding-right: 0;
+  }
+  
+  .technologiesContainer {
+    margin-top: 1rem;
+  }
+  
+  .sectionTitle, .caseStudyTitle, .contactTitle {
+    font-size: 2rem;
+  }
+  
+  .caseStudyResults {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .overview, .features, .benefits, .caseStudy, .contact {
+    padding: 4rem 0;
+  }
+  
+  .caseStudyContent {
+    padding: 2rem;
+  }
+  
+  .caseStudyResults {
+    grid-template-columns: 1fr;
+  }
+  
+  .resultCard {
+    padding: 1.5rem;
+  }
+  
+  .contactButtons {
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .contactButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .overview, .features, .benefits, .caseStudy, .contact {
+    padding: 3rem 0;
+  }
+  
+  .sectionTitle, .caseStudyTitle, .contactTitle {
+    font-size: 1.75rem;
+  }
+  
+  .overviewText, .benefitsIntro, .caseStudyText {
+    font-size: 1rem;
+  }
+  
+  .featureTitle {
+    font-size: 1.125rem;
+  }
+  
+  .caseStudyContent {
+    padding: 1.5rem;
+  }
+  
+  .caseStudyQuote {
+    font-size: 1.125rem;
+    padding-left: 1rem;
+  }
+}

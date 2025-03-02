@@ -1,118 +1,133 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 import Layout from '../components/layout/Layout';
 import Hero from '../components/sections/Hero';
-import Button from '../components/ui/Button';
+import FeaturesSection from '../components/sections/FeaturesSection';
+import TestimonialsSection from '../components/sections/TestimonialsSection';
+import FlipCardShowcase from '../components/sections/FlipCardShowcase';
+import BlogSection from '../components/sections/BlogSection';
+import { FaGraduationCap, FaHandsHelping, FaHistory, FaStore, FaChartLine } from 'react-icons/fa';
+import { fetchEntries } from '../lib/contentful';
 
-const FeaturesSection = dynamic(() => import('../components/sections/FeaturesSection'), { ssr: false });
-const TestimonialsSection = dynamic(() => import('../components/sections/TestimonialsSection'), { ssr: false });
+export async function getStaticProps() {
+  const blogPosts = await fetchEntries('blogPost');
 
-export default function Home() {
-  const features = [
+  return {
+    props: {
+      blogPosts: blogPosts.map((post) => ({
+        title: post.fields.title,
+        excerpt: post.fields.excerpt,
+        image: post.fields.image.fields.file.url,
+        link: `/blog/${post.fields.slug}`,
+      })),
+    },
+  };
+}
+
+const HomePage = ({ blogPosts }) => {
+  // Featured projects for the homepage
+  const featuredProjects = [
     {
+      id: 'geaux-academy',
       title: 'Geaux Academy',
-      description: 'Personalized online learning solutions.',
-      icon: '/images/geaux-academy-icon.svg',
+      subtitle: 'AI-Driven Learning Platform',
+      description: 'An innovative educational platform that uses AI to personalize learning experiences and adapt to individual student needs.',
+      link: '/projects/geaux-academy',
+      linkText: 'Explore Platform',
+      backgroundColor: '#e0f2fe',
+      accentColor: '#0284c7',
+      icon: <FaGraduationCap size={32} />,
+      backgroundImage: '/images/projects/geaux-academy-card-bg.jpg'
     },
     {
-      title: 'Geaux HelpED',
-      description: 'Streamlined patient care and clinical operations.',
-      icon: '/images/geaux-helped-icon.svg',
-    },
-    {
+      id: 'reanimated-echos',
       title: 'ReanimatED Echos',
-      description: 'Preserving voices through advanced AI.',
-      icon: '/images/reanimated-echos-icon.svg',
+      subtitle: 'Legacy Preservation Technology',
+      description: 'AI-powered legacy preservation technology that transforms personal narratives and photos into interactive voice-enhanced stories.',
+      link: '/projects/reanimated-echos',
+      linkText: 'Preserve Memories',
+      backgroundColor: '#f1f5f9',
+      accentColor: '#475569',
+      icon: <FaHistory size={32} />
     },
     {
+      id: 'geaux-emporium',
       title: 'Geaux Emporium',
-      description: 'Specialized healthcare educational resources and materials.',
-      icon: '/images/geaux-emporium-icon.svg',
-    },
+      subtitle: 'Creative Marketplace Platform',
+      description: 'A specialized marketplace platform that connects unique makers with enthusiastic buyers through innovative e-commerce solutions.',
+      link: '/projects/geaux-emporium',
+      linkText: 'Visit Marketplace',
+      backgroundColor: '#fef3c7',
+      accentColor: '#d97706',
+      icon: <FaStore size={32} />
+    }
   ];
 
+  // Example testimonials data
   const testimonials = [
     {
-      quote: "Geaux Academy transformed our educational approach entirely. The platform's interactive features increased student engagement by over 45%.",
-      name: "Dr. Sarah Johnson",
-      role: "Education Director",
-      project: "Geaux Academy",
-      image: "/images/testimonials/sarah-johnson.jpg",
+      quote: "GeauxSpecialist helped us increase productivity by 35% within the first month. Their team was incredibly responsive and provided ongoing support that exceeded our expectations.",
+      name: "Robert Smith",
+      role: "Director of Operations",
+      project: "Workflow Optimization",
+      projectLink: "/projects/geaux-academy",
+      image: "/images/testimonials/robert.jpg",
+      rating: 5,
       metrics: [
-        { value: "45%", label: "Engagement Increase" },
-        { value: "1,200+", label: "Students Helped" }
+        { value: "35%", label: "Productivity increase" },
+        { value: "20%", label: "Cost reduction" }
       ]
     },
     {
-      quote: "The efficiency gains from implementing Geaux HelpED in our healthcare facility have been remarkable. Patient wait times reduced dramatically.",
-      name: "Michael Chen, MD",
-      role: "Chief Medical Officer",
-      project: "Geaux HelpED",
-      image: "/images/testimonials/michael-chen.jpg",
-      metrics: [
-        { value: "32%", label: "Wait Time Reduction" },
-        { value: "8,500+", label: "Patients Processed" }
-      ]
+      quote: "The custom solution provided exactly what we needed. We've been able to visualize our marketing data in real-time and make better decisions based on accurate insights.",
+      name: "Lisa Wong",
+      role: "Marketing Director",
+      project: "Data Analytics Dashboard",
+      image: "/images/testimonials/lisa.jpg",
+      rating: 4.5
     },
     {
-      quote: "ReanimatED Echos' voice processing technology has revolutionized our diagnostic transcription process, saving countless hours of work.",
-      name: "Dr. Layla Rodriguez",
-      role: "Hospital Administrator",
-      project: "ReanimatED Echos",
-      image: "/images/testimonials/layla-rodriguez.jpg",
+      quote: "Working with GeauxSpecialist on our educational platform revolutionized how we approach online learning. The AI-driven personalization features have significantly improved student engagement.",
+      name: "Michael Johnson",
+      role: "Dean of Digital Learning",
+      project: "Geaux Academy Integration",
+      projectLink: "/projects/geaux-academy",
+      image: "/images/testimonials/michael.jpg",
+      rating: 5,
       metrics: [
-        { value: "85%", label: "Time Saved" },
-        { value: "99.2%", label: "Accuracy Rate" }
-      ]
-    },
-    {
-      quote: "Since partnering with Geaux Emporium, our educational resources reach twice as many schools as before. The platform is intuitive and powerful.",
-      name: "James Thompson",
-      role: "Supply Chain Director",
-      project: "Geaux Emporium",
-      image: "/images/testimonials/james-thompson.jpg",
-      metrics: [
-        { value: "2x", label: "Market Reach" },
-        { value: "15K+", label: "Products Delivered" }
+        { value: "47%", label: "Student engagement" },
+        { value: "3.5x", label: "Course completion" }
       ]
     }
   ];
 
   return (
-    <Layout title="Home">
-      <Hero 
-        title="Welcome to GeauxSpecialist"
-        subtitle="Innovative solutions across education, healthcare, technology, and e-commerce."
-        ctaText="Explore Our Projects"
-        ctaLink="/projects"
-        backgroundImage="/images/hero-background.jpg"
-      />
-
-      <FeaturesSection 
-        title="Our Projects"
-        subtitle="Discover the innovative solutions we're building to address real-world challenges."
-        features={features}
+    <Layout>
+      <Hero />
+      <FeaturesSection />
+      
+      {/* Featured Projects Showcase using FlipCardShowcase */}
+      <FlipCardShowcase
+        title="Our Featured Projects"
+        subtitle="Discover our innovative solutions across different industries"
+        cards={featuredProjects}
+        viewAllLink="/projects"
       />
       
-      <TestimonialsSection
-        title="Success Stories"
-        subtitle="Real results from our satisfied clients and partners"
+      <TestimonialsSection 
+        title="What Our Clients Say" 
+        subtitle="Hear from organizations that have partnered with us" 
         testimonials={testimonials}
+        displayMode="carousel"
+        autoplaySpeed={5000}
+        showProjectsButton={true}
       />
-
-      <section className="cta-section">
-        <div className="container">
-          <h2>Ready to learn more about what we do?</h2>
-          <p>Contact us today to discuss how GeauxSpecialist can help bring your ideas to life.</p>
-          <Button 
-            variant="secondary" 
-            size="large"
-            onClick={() => window.location.href = '/contact'}
-          >
-            Contact Us
-          </Button>
-        </div>
-      </section>
+      
+      <BlogSection 
+        title="Latest News"
+        posts={blogPosts}
+      />
     </Layout>
   );
-}
+};
+
+export default HomePage;

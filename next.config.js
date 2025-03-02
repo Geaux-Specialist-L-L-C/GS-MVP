@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // Using the modern export config for Next.js 13.4+
-  output: 'export',
+  // Removing static export configuration
+  // output: 'export',
   trailingSlash: true,
   images: {
     domains: ['localhost'],
@@ -11,7 +11,8 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
-    unoptimized: true, // Required for static export
+    // Change to false since we're not using static export
+    unoptimized: false,
   },
   // Removing i18n config as it's incompatible with static export
   eslint: {

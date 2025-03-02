@@ -1,0 +1,184 @@
+/* ProjectsPage.module.css */
+
+/* Intro Section Styles */
+.introSection {
+  padding: 5rem 0;
+  background-color: #fff;
+}
+
+.introContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+}
+
+.sectionText {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+/* Process Section Styles */
+.processBg {
+  padding: 5rem 0;
+  background-color: #f8fafc;
+}
+
+.processSection {
+  text-align: center;
+}
+
+.processTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.processSubtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.processCard {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.processIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.processStepTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.processStepDesc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #64748b;
+}
+
+/* CTA Section Styles */
+.projectsCta {
+  padding: 5rem 0;
+  background-color: #2563eb;
+  color: white;
+}
+
+.ctaContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.ctaText {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ctaLink {
+  display: inline-block;
+  background-color: white;
+  color: #2563eb;
+  font-weight: 600;
+  padding: 1rem 2.5rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  font-size: 1.125rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ctaLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .sectionTitle, .processTitle, .ctaTitle {
+    font-size: 2.25rem;
+  }
+  
+  .processGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .introSection, .processBg, .projectsCta {
+    padding: 4rem 0;
+  }
+  
+  .sectionTitle, .processTitle, .ctaTitle {
+    font-size: 2rem;
+  }
+  
+  .processGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .ctaText {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .introSection, .processBg, .projectsCta {
+    padding: 3rem 0;
+  }
+  
+  .sectionTitle, .processTitle, .ctaTitle {
+    font-size: 1.75rem;
+  }
+  
+  .sectionText, .processSubtitle {
+    font-size: 1rem;
+  }
+  
+  .ctaLink {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+  }
+}
