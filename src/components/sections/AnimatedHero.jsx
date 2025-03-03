@@ -29,7 +29,7 @@ const AnimatedHero = ({
   secondaryCtaLink,
   backgroundImage = '/images/hero-background.jpg',
   overlayColor = 'rgba(0, 0, 0, 0.6)',
-  height = '85vh'
+  height = '85vh',
 }) => {
   const heroStyle = {
     backgroundImage: `url(${backgroundImage})`,
@@ -48,9 +48,9 @@ const AnimatedHero = ({
       transition: {
         staggerChildren: 0.2,
         duration: 0.8,
-        ease: "easeOut"
-      }
-    }
+        ease: 'easeOut',
+      },
+    },
   };
   
   const itemVariants = {
@@ -60,9 +60,9 @@ const AnimatedHero = ({
       opacity: 1, 
       transition: { 
         duration: 0.7,
-        ease: "easeOut"
-      } 
-    }
+        ease: 'easeOut',
+      },
+    },
   };
   
   const subtitleVariants = {
@@ -72,9 +72,9 @@ const AnimatedHero = ({
       opacity: 1, 
       transition: { 
         duration: 0.7,
-        ease: "easeOut"
-      } 
-    }
+        ease: 'easeOut',
+      },
+    },
   };
 
   const buttonVariants = {
@@ -83,27 +83,27 @@ const AnimatedHero = ({
       scale: 1.05,
       transition: {
         duration: 0.2,
-        ease: "easeInOut"
-      }
+        ease: 'easeInOut',
+      },
     },
     tap: { 
       scale: 0.95,
       transition: {
         duration: 0.1,
-        ease: "easeInOut"
-      }
-    }
+        ease: 'easeInOut',
+      },
+    },
   };
   
   return (
     <section className={styles.heroSection} style={heroStyle}>
-      <div className={styles.overlay} style={overlayStyle}></div>
+      <div className={styles.overlay} style={overlayStyle} />
       
       <div className={styles.parallaxBg}>
         <motion.div
           initial={{ y: 0 }}
           animate={{ y: [0, -15, 0] }}
-          transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
+          transition={{ repeat: Infinity, duration: 10, ease: 'easeInOut' }}
           className={styles.parallaxLayer}
         />
       </div>
@@ -116,35 +116,26 @@ const AnimatedHero = ({
           variants={containerVariants}
         >
           {title && (
-            <motion.h1
-              className={styles.title}
-              variants={itemVariants}
-            >
+            <motion.h1 className={styles.title} variants={itemVariants}>
               {title}
             </motion.h1>
           )}
           
           {subtitle && (
-            <motion.p
-              className={styles.subtitle}
-              variants={subtitleVariants}
-            >
+            <motion.p className={styles.subtitle} variants={subtitleVariants}>
               {subtitle}
             </motion.p>
           )}
           
-          <motion.div 
-            className={styles.ctaContainer}
-            variants={itemVariants}
-          >
+          <motion.div className={styles.ctaContainer} variants={itemVariants}>
             {primaryCta && (
               <Link href={primaryCtaLink || '#'} legacyBehavior>
                 <motion.a 
                   className={`${styles.button} ${styles.primaryButton}`}
                   variants={buttonVariants}
-                  initial="initial"
-                  whileHover="hover"
-                  whileTap="tap"
+                  initial='initial'
+                  whileHover='hover'
+                  whileTap='tap'
                 >
                   {primaryCta}
                 </motion.a>
@@ -156,9 +147,9 @@ const AnimatedHero = ({
                 <motion.a 
                   className={`${styles.button} ${styles.secondaryButton}`}
                   variants={buttonVariants}
-                  initial="initial"
-                  whileHover="hover"
-                  whileTap="tap"
+                  initial='initial'
+                  whileHover='hover'
+                  whileTap='tap'
                 >
                   {secondaryCta}
                 </motion.a>
@@ -175,7 +166,7 @@ const AnimatedHero = ({
         transition={{ delay: 1.2, duration: 0.5 }}
       >
         <div className={styles.mouseIcon}>
-          <div className={styles.mouseWheel}></div>
+          <div className={styles.mouseWheel} />
         </div>
         <p>Scroll Down</p>
       </motion.div>

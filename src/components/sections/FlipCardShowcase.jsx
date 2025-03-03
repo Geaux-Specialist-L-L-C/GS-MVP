@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+
 import { motion, AnimatePresence } from 'framer-motion';
+
 import FlipCard from '../ui/FlipCard';
 import styles from '../../styles/FlipCardShowcase.module.css';
 
@@ -23,7 +25,7 @@ const FlipCardShowcase = ({
   cards, 
   categories = [],
   enableFiltering = false,
-  viewAllLink = '/projects' 
+  viewAllLink = '/projects',
 }) => {
   // State for active filter category
   const [activeFilter, setActiveFilter] = useState('All');
@@ -35,9 +37,7 @@ const FlipCardShowcase = ({
     if (activeFilter === 'All') {
       setFilteredCards(cards);
     } else {
-      const filtered = cards.filter(card => 
-        card.categories && card.categories.includes(activeFilter)
-      );
+      const filtered = cards.filter(card => card.categories && card.categories.includes(activeFilter));
       setFilteredCards(filtered);
     }
   }, [activeFilter, cards]);
@@ -48,9 +48,9 @@ const FlipCardShowcase = ({
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
   
   const cardVariants = {
@@ -58,18 +58,18 @@ const FlipCardShowcase = ({
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: "easeOut" }
+      transition: { duration: 0.5, ease: 'easeOut' },
     },
     exit: { 
       opacity: 0,
       y: -20,
-      transition: { duration: 0.3 }
-    }
+      transition: { duration: 0.3 },
+    },
   };
   
   return (
     <section className={styles.showcase}>
-      <div className="container">
+      <div className='container'>
         {title && <h2 className={styles.title}>{title}</h2>}
         {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         
@@ -104,9 +104,9 @@ const FlipCardShowcase = ({
         <motion.div 
           className={styles.cardsGrid}
           variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          initial='hidden'
+          whileInView='visible'
+          viewport={{ once: true, margin: '-100px' }}
         >
           <AnimatePresence>
             {filteredCards.length > 0 ? (
@@ -116,16 +116,26 @@ const FlipCardShowcase = ({
                   className={styles.cardWrapper}
                   variants={cardVariants}
                   layout
-                  exit="exit"
+                  exit='exit'
                 >
                   <FlipCard
                     frontContent={
-                      <div className={styles.cardFront} style={{
-                        backgroundColor: card.backgroundColor || '#f8fafc'
-                      }}>
-                        {card.icon && <div className={styles.cardIcon} style={{
-                          color: card.accentColor || '#2563eb'
-                        }}>{card.icon}</div>}
+                      <div 
+                        className={styles.cardFront}
+                        style={{
+                          backgroundColor: card.backgroundColor || '#f8fafc',
+                        }}
+                      >
+                        {card.icon && (
+                          <div
+                            className={styles.cardIcon}
+                            style={{
+                              color: card.accentColor || '#2563eb',
+                            }}
+                          >
+                            {card.icon}
+                          </div>
+                        )}
                         <h3 className={styles.cardTitle}>{card.title}</h3>
                         <p className={styles.cardSubtitle}>{card.subtitle}</p>
                         <div className={styles.flipPrompt}>
@@ -135,12 +145,17 @@ const FlipCardShowcase = ({
                       </div>
                     }
                     backContent={
-                      <div className={styles.cardBack} style={{
-                        backgroundColor: card.accentColor || '#2563eb',
-                        color: 'white'
-                      }}>
+                      <div 
+                        className={styles.cardBack}
+                        style={{
+                          backgroundColor: card.accentColor || '#2563eb',
+                          color: 'white',
+                        }}
+                      >
                         <p className={styles.cardDescription}>{card.description}</p>
-                        <a href={card.link} className={styles.cardCta}>{card.linkText || 'Learn More'}</a>
+                        <a href={card.link} className={styles.cardCta}>
+                          {card.linkText || 'Learn More'}
+                        </a>
                       </div>
                     }
                     backgroundImage={card.backgroundImage}
@@ -170,7 +185,9 @@ const FlipCardShowcase = ({
         {/* Optional "View All" link */}
         {viewAllLink && (
           <div className={styles.showcaseFooter}>
-            <a href={viewAllLink} className={styles.viewAllLink}>View All Projects</a>
+            <a href={viewAllLink} className={styles.viewAllLink}>
+              View All Projects
+            </a>
           </div>
         )}
       </div>
