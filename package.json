@@ -1,6 +1,9 @@
 {
   "name": "geaux",
   "description": "Build a full-stack web application with Next.js.",
+  "engines": {
+    "node": "^20.0.0 || >=22.0.0"
+  },
   "cloudflare": {
     "label": "Next.js Framework Starter",
     "products": [
