@@ -1,4 +1,7 @@
 // .eslintrc.js
+// Description: ESLint configuration for the Geaux Specialist project
+// Created: 2025-03-03
+
 module.exports = {
   root: true,
   env: {
@@ -46,7 +49,7 @@ module.exports = {
   rules: {
     // Error prevention
     'no-console': ['warn', { allow: ['warn', 'error'] }],
-    'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+    'no-unused-vars': 'warn',
     'no-duplicate-imports': 'error',
     'no-param-reassign': 'error',
     
@@ -55,7 +58,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off', // Not needed in Next.js
     'react/no-unescaped-entities': 'off',
     'react/display-name': 'off',
-    'react/self-closing-comp': 'warn', // Changed from error to warn
+    'react/self-closing-comp': 'warn',
     'react/jsx-pascal-case': 'warn',
     'react/jsx-no-useless-fragment': 'warn',
     'react/jsx-curly-brace-presence': ['warn', { props: 'never', children: 'never' }],
@@ -70,35 +73,12 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 'warn', // Changed from error to warn
     
     // Import rules
-    'import/order': ['warn', {
-      'groups': [
-        'builtin',
-        'external',
-        'internal',
-        'parent',
-        'sibling',
-        'index',
-      ],
-      'newlines-between': 'always',
-      'alphabetize': { order: 'asc', caseInsensitive: true },
-    }],
+    'import/order': 'warn',
     'import/no-anonymous-default-export': 'warn',
     'import/no-unresolved': 'warn', // Changed from error to warn
     
     // Code style (complementary to prettier)
-    'prettier/prettier': ['warn', {
-      singleQuote: true,
-      jsxSingleQuote: true,
-      trailingComma: 'es5',
-      printWidth: 100,
-      tabWidth: 2,
-      semi: true,
-      endOfLine: 'auto',
-      bracketSpacing: true,
-      arrowParens: 'avoid',
-      jsxBracketSameLine: false,
-      useTabs: false,
-    }],
+    'prettier/prettier': 'warn',
   },
   overrides: [
     // TypeScript specific rules

@@ -1,7 +1,7 @@
 # GeauxSpecialist.com
 
 Official website for Geaux Specialist LLC, developed with Next.js.
-
+a
 ## Table of Contents
 
 - [Overview](#overview)
