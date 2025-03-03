@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "4.20250204.0",
+    "@netlify/plugin-nextjs": "^5.9.4",
     "@opennextjs/cloudflare": "0.5.3",
     "@svgr/webpack": "^8.1.0",
     "@testing-library/jest-dom": "^6.6.3",
