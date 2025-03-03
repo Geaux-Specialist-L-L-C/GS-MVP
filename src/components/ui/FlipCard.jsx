@@ -109,7 +109,7 @@ const FlipCard = ({
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={flipOnClick ? 0 : -1}
-      role={flipOnClick ? "button" : "presentation"}
+      role={flipOnClick ? 'button' : 'presentation'}
       aria-pressed={flipOnClick ? isFlipped : undefined}
       ref={cardRef}
     >
@@ -118,7 +118,7 @@ const FlipCard = ({
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={getTransitionStyles()}
         initial={false}
-        aria-live="polite"
+        aria-live='polite'
       >
         {/* Front */}
         <div 

@@ -23,7 +23,7 @@ const Hero = ({
     visible: { 
       opacity: 1,
       transition: { 
-        when: "beforeChildren", 
+        when: 'beforeChildren', 
         staggerChildren: 0.2,
         duration: 0.5
       } 
@@ -37,16 +37,16 @@ const Hero = ({
   
   return (
     <section className={`hero-section ${overlayClass}`} style={heroStyle}>
-      <div className="container">
+      <div className='container'>
         <motion.div 
-          className="hero-content"
-          initial="hidden"
-          animate="visible"
+          className='hero-content'
+          initial='hidden'
+          animate='visible'
           variants={containerVariants}
         >
           {title && (
             <motion.h1 
-              className="hero-title"
+              className='hero-title'
               variants={itemVariants}
             >
               {title}
@@ -55,7 +55,7 @@ const Hero = ({
           
           {subtitle && (
             <motion.p 
-              className="hero-subtitle"
+              className='hero-subtitle'
               variants={itemVariants}
             >
               {subtitle}
@@ -63,14 +63,14 @@ const Hero = ({
           )}
           
           <motion.div 
-            className="hero-cta flex justify-center"
+            className='hero-cta flex justify-center'
             variants={itemVariants}
           >
             <Button 
-              variant="primary" 
-              size="large" 
+              variant='primary' 
+              size='large' 
               onClick={() => window.location.href = ctaLink}
-              className="hover-flip-card"
+              className='hover-flip-card'
             >
               {ctaText}
             </Button>

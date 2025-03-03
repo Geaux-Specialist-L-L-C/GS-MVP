@@ -1,5 +1,10 @@
-// Reusable Card component
+// File: /src/components/ui/Card.jsx
+// Description: Card component for the UI
+// Author: GitHub Copilot
+// Created: 2024-03-03
+
 import React from 'react';
+import PropTypes from 'prop-types';
 import Image from 'next/image';
 
 const Card = ({
@@ -7,37 +12,47 @@ const Card = ({
   subtitle,
   content,
   imageUrl,
-  imageAlt = '',
+  imageAlt,
   footer,
-  className = '',
+  className,
   onClick,
 }) => {
-  const cardClasses = `card ${className}`;
-  
   return (
-    <div className={cardClasses} onClick={onClick}>
+    <div className={`card ${className}`} onClick={onClick} role='button' tabIndex={0} onKeyPress={onClick}>
       {imageUrl && (
-        <div className="card-image">
-          <Image 
-            src={imageUrl}
-            alt={imageAlt || title}
-            layout="responsive"
-            width={400}
-            height={250}
-            objectFit="cover"
-          />
+        <div className='card-image'>
+          <Image src={imageUrl} alt={imageAlt} layout='responsive' objectFit='cover' />
         </div>
       )}
-      
-      <div className="card-body">
-        {title && <h3 className="card-title">{title}</h3>}
-        {subtitle && <h4 className="card-subtitle">{subtitle}</h4>}
-        {content && <div className="card-content">{content}</div>}
+      <div className='card-body'>
+        <h3 className='card-title'>{title}</h3>
+        <h4 className='card-subtitle'>{subtitle}</h4>
+        <p className='card-content'>{content}</p>
       </div>
-      
-      {footer && <div className="card-footer">{footer}</div>}
+      {footer && <div className='card-footer'>{footer}</div>}
     </div>
   );
+};
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  content: PropTypes.string,
+  imageUrl: PropTypes.string,
+  imageAlt: PropTypes.string,
+  footer: PropTypes.node,
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+};
+
+Card.defaultProps = {
+  subtitle: '',
+  content: '',
+  imageUrl: '',
+  imageAlt: '',
+  footer: null,
+  className: '',
+  onClick: null,
 };
 
 export default Card;

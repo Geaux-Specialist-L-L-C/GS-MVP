@@ -1,61 +1,51 @@
-import Link from 'next/link';
+// File: /src/components/ui/ProjectCard.jsx
+// Description: ProjectCard component for the UI
+// Author: GitHub Copilot
+// Created: 2024-03-03
+
+import React from 'react';
+import PropTypes from 'prop-types';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../../styles/ProjectCard.module.css';
 
-const ProjectCard = ({ 
-  title, 
-  description, 
-  link, 
-  imageSrc = '/images/project-placeholder.jpg',
-  imageAlt = 'Project thumbnail',
-  tags = []
+const ProjectCard = ({
+  title,
+  description,
+  link,
+  imageSrc,
+  imageAlt,
+  tags,
 }) => {
   return (
     <div className={styles.card}>
-      <div className={styles.imageContainer}>
-        <Image 
-          src={imageSrc} 
-          alt={imageAlt}
-          width={400}
-          height={225}
-          className={styles.image}
-        />
-      </div>
-      
-      <div className={styles.content}>
-        <h3 className={styles.title}>{title}</h3>
-        
-        {tags.length > 0 && (
-          <div className={styles.tags}>
-            {tags.map((tag, index) => (
-              <span key={index} className={styles.tag}>{tag}</span>
-            ))}
+      <Link href={link} passHref>
+        <a>
+          <div className={styles.imageWrapper}>
+            <Image src={imageSrc} alt={imageAlt} layout='responsive' width={400} height={225} className={styles.image} />
           </div>
-        )}
-        
-        <p className={styles.description}>{description}</p>
-        
-        <Link href={link} className={styles.link}>
-          Learn More
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="16" 
-            height="16" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            className={styles.arrow}
-          >
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </Link>
-      </div>
+          <div className={styles.contentWrapper}>
+            <h3 className={styles.title}>{title}</h3>
+            <p className={styles.description}>{description}</p>
+            <div className={styles.tags}>
+              {tags.map((tag, index) => (
+                <span key={index} className={styles.tag}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        </a>
+      </Link>
     </div>
   );
+};
+
+ProjectCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  imageSrc: PropTypes.string.isRequired,
+  imageAlt: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default ProjectCard;

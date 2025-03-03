@@ -1,36 +1,45 @@
-import Link from 'next/link';
+import React from 'react';
 import Image from 'next/image';
-import styles from '../../styles/HeroSection.module.css';
+import Link from 'next/link';
+import PropTypes from 'prop-types';
 
 const HeroSection = ({
-  title = 'Empowering Communities Through Innovation',
-  subtitle = 'Geaux Specialist LLC delivers cutting-edge solutions in technology and education.',
-  primaryButtonText = 'Explore Projects',
-  primaryButtonLink = '/projects',
-  secondaryButtonText = 'About Us',
-  secondaryButtonLink = '/about',
-  backgroundImage = '/images/hero-background.jpg'
+  title,
+  subtitle,
+  primaryButtonText,
+  primaryButtonLink,
+  secondaryButtonText,
+  secondaryButtonLink,
+  backgroundImage,
 }) => {
   return (
-    <section className={styles.hero} style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <div className={styles.overlay}></div>
-      <div className="container">
-        <div className={styles.content}>
-          <h1 className={styles.title}>{title}</h1>
-          <p className={styles.subtitle}>{subtitle}</p>
-          
-          <div className={styles.buttons}>
-            <Link href={primaryButtonLink} className={`button button-primary ${styles.button}`}>
-              {primaryButtonText}
+    <section className='hero-section' style={{ backgroundImage: `url(${backgroundImage})` }}>
+      <div className='container'>
+        <div className='hero-content'>
+          <h1 className='hero-title'>{title}</h1>
+          <p className='hero-subtitle'>{subtitle}</p>
+          <div className='hero-buttons'>
+            <Link href={primaryButtonLink} passHref>
+              <a className='btn btn-primary'>{primaryButtonText}</a>
             </Link>
-            <Link href={secondaryButtonLink} className={`button button-secondary ${styles.button}`}>
-              {secondaryButtonText}
+            <Link href={secondaryButtonLink} passHref>
+              <a className='btn btn-secondary'>{secondaryButtonText}</a>
             </Link>
           </div>
         </div>
       </div>
     </section>
   );
+};
+
+HeroSection.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  primaryButtonText: PropTypes.string.isRequired,
+  primaryButtonLink: PropTypes.string.isRequired,
+  secondaryButtonText: PropTypes.string.isRequired,
+  secondaryButtonLink: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
 };
 
 export default HeroSection;

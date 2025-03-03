@@ -1,34 +1,30 @@
-import React from 'react';
+// File: /src/components/ui/Button.jsx
+// Description: Button component for the UI
+// Author: GitHub Copilot
+// Created: 2024-03-03
 
-const Button = ({ 
-  children, 
-  type = 'button', 
-  variant = 'primary', 
-  size = 'medium',
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const Button = ({
+  children,
+  type = 'button',
+  variant = 'primary',
+  size = 'md',
   onClick,
-  className = '',
+  className,
   disabled = false,
   fullWidth = false,
   ...props
 }) => {
-  const baseClasses = 'btn';
-  const variantClasses = `btn-${variant}`;
-  const sizeClasses = `btn-${size}`;
-  const widthClasses = fullWidth ? 'btn-full' : '';
-  
-  // Check if button should have flip effect
-  const hasFlipEffect = className.includes('hover-flip-card');
-  const flipClass = hasFlipEffect ? 'flip-card-effect' : '';
-  
   const buttonClasses = [
-    baseClasses, 
-    variantClasses, 
-    sizeClasses, 
-    widthClasses,
-    flipClass,
-    className
+    'btn',
+    `btn-${variant}`,
+    `btn-${size}`,
+    fullWidth ? 'btn-full-width' : '',
+    className,
   ].join(' ').trim();
-  
+
   return (
     <button
       type={type}
@@ -40,6 +36,17 @@ const Button = ({
       {children}
     </button>
   );
+};
+
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  fullWidth: PropTypes.bool,
 };
 
 export default Button;
