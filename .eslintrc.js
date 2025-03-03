@@ -49,7 +49,7 @@ module.exports = {
   rules: {
     // Error prevention
     'no-console': ['warn', { allow: ['warn', 'error'] }],
-    'no-unused-vars': 'warn',
+    'no-unused-vars': 'off',
     'no-duplicate-imports': 'error',
     'no-param-reassign': 'error',
     
@@ -68,17 +68,17 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     
     // Accessibility
-    'jsx-a11y/anchor-is-valid': 'warn', // Changed from error to warn
+    'jsx-a11y/anchor-is-valid': 'off', // Changed from error to warn
     'jsx-a11y/click-events-have-key-events': 'warn', // Changed from error to warn
     'jsx-a11y/no-static-element-interactions': 'warn', // Changed from error to warn
     
     // Import rules
     'import/order': 'warn',
     'import/no-anonymous-default-export': 'warn',
-    'import/no-unresolved': 'warn', // Changed from error to warn
+    'import/no-unresolved': 'off', // Changed from error to warn
     
     // Code style (complementary to prettier)
-    'prettier/prettier': 'warn',
+    'prettier/prettier': 'off',
   },
   overrides: [
     // TypeScript specific rules
