@@ -1,6 +1,9 @@
-import { defineConfig } from 'next';
+// File: /next.config.js
+// Description: Next.js configuration file for GS-MVP project
+// Author: GitHub Copilot
+// Created: 2023-10-10
 
-export default defineConfig({
+module.exports = {
   reactStrictMode: true,
   swcMinify: true,
   trailingSlash: true,
@@ -26,4 +29,4 @@ export default defineConfig({
 
     return config;
   },
-});
+};

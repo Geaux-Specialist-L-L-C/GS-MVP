@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Layout from '../../components/layout/Layout';
 import AnimatedHero from '../../components/sections/AnimatedHero';
-import { FaMicrophone, FaHistory, FaAi, FaMagic, FaShieldAlt, FaCloudUploadAlt } from 'react-icons/fa';
+import { FaMicrophone, FaHistory, FaRobot, FaMagic, FaShieldAlt, FaCloudUploadAlt } from 'react-icons/fa';
 import styles from '../../styles/ProjectDetail.module.css';
 
 /**
@@ -45,7 +45,7 @@ const ReanimatedEchosPage = () => {
       description: "Digital archiving of photos, videos, and documents with intelligent organization and connection of related memories across different media."
     },
     {
-      icon: <FaAi size={36} className={styles.featureIcon} />,
+      icon: <FaRobot size={36} className={styles.featureIcon} />,
       title: "AI-Generated Narratives",
       description: "Transform written stories and documented memories into compelling narratives that can be experienced through interactive storytelling."
     },

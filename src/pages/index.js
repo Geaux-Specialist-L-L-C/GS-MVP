@@ -1,3 +1,8 @@
+// File: /src/pages/index.js
+// Description: Main landing page for GeauxSpecialist.
+// Author: GitHub Copilot
+// Created: 2025-03-02
+
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import Hero from '../components/sections/Hero';
@@ -24,7 +29,6 @@ export async function getStaticProps() {
 }
 
 const HomePage = ({ blogPosts }) => {
-  // Featured projects for the homepage
   const featuredProjects = [
     {
       id: 'geaux-academy',
@@ -62,7 +66,6 @@ const HomePage = ({ blogPosts }) => {
     }
   ];
 
-  // Example testimonials data
   const testimonials = [
     {
       quote: "GeauxSpecialist helped us increase productivity by 35% within the first month. Their team was incredibly responsive and provided ongoing support that exceeded our expectations.",
@@ -102,17 +105,23 @@ const HomePage = ({ blogPosts }) => {
 
   return (
     <Layout>
-      <Hero />
-      <FeaturesSection />
-      
-      {/* Featured Projects Showcase using FlipCardShowcase */}
+      <Hero 
+        title="Welcome to GeauxSpecialist"
+        subtitle="Innovative solutions across education, healthcare, technology, and e-commerce"
+      />
+      <FeaturesSection 
+        features={featuredProjects.map(project => ({
+          title: project.title,
+          description: project.description,
+          icon: project.icon
+        }))}
+      />
       <FlipCardShowcase
         title="Our Featured Projects"
         subtitle="Discover our innovative solutions across different industries"
         cards={featuredProjects}
         viewAllLink="/projects"
       />
-      
       <TestimonialsSection 
         title="What Our Clients Say" 
         subtitle="Hear from organizations that have partnered with us" 
@@ -121,7 +130,6 @@ const HomePage = ({ blogPosts }) => {
         autoplaySpeed={5000}
         showProjectsButton={true}
       />
-      
       <BlogSection 
         title="Latest News"
         posts={blogPosts}
