@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
+import Link from 'next/link';
 
 const TestComponents = () => {
   // Sample testimonials with ratings and project links
@@ -111,12 +112,9 @@ const TestComponents = () => {
               The TestimonialsSection component supports both grid and carousel layouts,
               with options for star ratings, custom backgrounds, metrics, and project links.
             </p>
-            <a 
-              href="/"
-              className="inline-block bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition"
-            >
-              Back to Home
-            </a>
+            <Link href="/">
+              <span>Navigate to Home</span>
+            </Link>
           </div>
         </div>
       </div>

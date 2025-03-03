@@ -4,6 +4,7 @@ import Layout from '../components/layout/Layout';
 import FlipCardShowcase from '../components/sections/FlipCardShowcase';
 import { FaGraduationCap, FaHandsHelping, FaHistory, FaStore, FaChartLine } from 'react-icons/fa';
 import styles from '../styles/ProjectsPage.module.css';
+import Link from 'next/link';
 
 /**
  * Projects Page
@@ -142,9 +143,9 @@ const ProjectsPage = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <a href="/contact" className={styles.primaryButton}>
-                Contact Us
-              </a>
+              <Link href="/contact/">
+                <span className="text-primary hover:text-primary-dark">Contact us</span>
+              </Link>
               <a href="#" className={styles.secondaryButton} onClick={(e) => {
                 e.preventDefault();
                 document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
