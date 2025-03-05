@@ -38,15 +38,15 @@ const ProjectsPage = () => {
       backgroundImage: '/images/projects/geaux-academy-card-bg.jpg'
     },
     {
-      id: 'geaux-helped',
-      title: 'Geaux HelpED',
-      subtitle: 'Educational Support Resources',
-      description: 'Comprehensive educational support resources providing students with the tools they need to excel in school and beyond.',
-      link: '/projects/geaux-helped',
+      id: 'geaux-health',
+      title: 'Geaux Health',
+      subtitle: 'AI-Powered Healthcare Assistance',
+      description: 'This platform focuses on providing personalized healthcare support, particularly for individuals with special medical needs and their caregivers.',
+      link: '/projects/geaux-health',
       linkText: 'Get Support',
       backgroundColor: '#dcfce7',
       accentColor: '#059669',
-      categories: ['Education', 'Business'],
+      categories: ['Healthcare', 'Technology'],
       icon: <FaHandsHelping size={32} />
     },
     {
@@ -90,8 +90,8 @@ const ProjectsPage = () => {
   return (
     <Layout 
       title="Our Projects | GeauxSpecialist"
-      description="Explore our diverse portfolio of projects including Geaux Academy, Geaux HelpED, ReanimatED Echos, and more."
-      keywords="projects, portfolio, Geaux Academy, Geaux HelpED, ReanimatED Echos, Geaux Emporium, SEO Geaux"
+      description="Explore our diverse portfolio of projects including Geaux Academy, Geaux Health, ReanimatED Echos, and more."
+      keywords="projects, portfolio, Geaux Academy, Geaux Health, ReanimatED Echos, Geaux Emporium, SEO Geaux"
       canonical="/projects"
     >
       <section className={styles.heroSection}>

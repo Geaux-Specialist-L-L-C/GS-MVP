@@ -2,16 +2,16 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Layout from '../../components/layout/Layout';
 import AnimatedHero from '../../components/sections/AnimatedHero';
-import { FaUserGraduate, FaBookOpen, FaChartLine, FaUsers, FaLaptop, FaRegCalendarAlt } from 'react-icons/fa';
+import { FaUserMd, FaCalendarAlt, FaPills, FaHeartbeat, FaUtensils, FaBell, FaRobot, FaShieldAlt, FaLock } from 'react-icons/fa';
 import styles from '../../styles/ProjectDetail.module.css';
 
 /**
- * Geaux HelpED Project Page
+ * Geaux Health Project Page
  * 
- * Detailed information about the Geaux HelpED project, showcasing
- * its educational support resources and learning tools.
+ * Detailed information about the Geaux Health project, showcasing
+ * its AI-powered healthcare assistance features.
  */
-const GeauxHelpEDPage = () => {
+const GeauxHealthPage = () => {
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -32,48 +32,58 @@ const GeauxHelpEDPage = () => {
     }
   };
   
-  // Features of Geaux HelpED
+  // Features of Geaux Health
   const features = [
     {
-      icon: <FaUserGraduate size={36} className={styles.featureIcon} />,
-      title: "Personalized Learning Support",
-      description: "Customized assistance for students of all ages, adapting to individual learning styles and academic needs."
+      icon: <FaCalendarAlt size={36} className={styles.featureIcon} />,
+      title: "Doctor Appointments",
+      description: "AI-powered reminders and scheduling for doctor appointments."
     },
     {
-      icon: <FaBookOpen size={36} className={styles.featureIcon} />,
-      title: "Curriculum Enhancement",
-      description: "Supplementary learning materials that align with educational standards while making complex subjects accessible."
+      icon: <FaPills size={36} className={styles.featureIcon} />,
+      title: "Medication Tracking",
+      description: "Notifications for dosages and refills to ensure medication adherence."
     },
     {
-      icon: <FaChartLine size={36} className={styles.featureIcon} />,
-      title: "Progress Tracking",
-      description: "Comprehensive analytics that monitor student improvement, identify knowledge gaps, and recommend targeted interventions."
+      icon: <FaHeartbeat size={36} className={styles.featureIcon} />,
+      title: "Symptom Monitoring",
+      description: "Logs for pain levels, vitals, and mood tracking to monitor symptoms."
     },
     {
-      icon: <FaUsers size={36} className={styles.featureIcon} />,
-      title: "Collaborative Learning",
-      description: "Virtual study groups and peer-to-peer learning opportunities that foster community and collective growth."
+      icon: <FaUtensils size={36} className={styles.featureIcon} />,
+      title: "Dietary & Hydration Monitoring",
+      description: "Meal plans and hydration tracking based on dietary needs."
     },
     {
-      icon: <FaLaptop size={36} className={styles.featureIcon} />,
-      title: "Interactive Exercises",
-      description: "Engaging, hands-on activities that reinforce learning concepts through practice and application."
+      icon: <FaBell size={36} className={styles.featureIcon} />,
+      title: "Emergency Alerts",
+      description: "SOS notifications sent to caregivers in critical situations."
     },
     {
-      icon: <FaRegCalendarAlt size={36} className={styles.featureIcon} />,
-      title: "Flexible Scheduling",
-      description: "On-demand access to educational support, allowing students to learn at their own pace and preferred times."
+      icon: <FaRobot size={36} className={styles.featureIcon} />,
+      title: "AI-Generated Daily Care Plans",
+      description: "Recommendations based on medical history and current health status."
+    },
+    {
+      icon: <FaShieldAlt size={36} className={styles.featureIcon} />,
+      title: "HIPAA-Compliant Data Storage",
+      description: "Secure handling of patient records with HIPAA compliance."
+    },
+    {
+      icon: <FaLock size={36} className={styles.featureIcon} />,
+      title: "Encrypted Medical Records",
+      description: "Only authorized users can access encrypted medical records."
     }
   ];
 
   // Benefits and outcomes
   const benefits = [
-    "Improved academic performance in 87% of participating students",
-    "Reduced homework frustration through targeted guidance",
-    "Increased student confidence and subject-matter engagement",
-    "Better retention of key concepts through varied learning approaches",
-    "Support for parents and caregivers in guiding educational development",
-    "Seamless integration with existing school curricula"
+    "Improved medication adherence and health outcomes",
+    "Reduced hospital readmissions through proactive symptom monitoring",
+    "Enhanced caregiver coordination and support",
+    "Personalized care plans tailored to individual needs",
+    "Increased patient engagement and satisfaction",
+    "Secure and compliant handling of sensitive medical data"
   ];
 
   // Technologies used
@@ -86,20 +96,20 @@ const GeauxHelpEDPage = () => {
 
   return (
     <Layout 
-      title="Geaux HelpED"
-      description="Comprehensive educational support resources providing students with the tools they need to excel in school and beyond."
-      keywords="education, tutoring, academic support, learning resources, student help, study aids"
-      canonical="/projects/geaux-helped"
-      ogImage="/images/projects/geaux-helped-og.jpg"
+      title="Geaux Health"
+      description="AI-powered healthcare assistance providing personalized support for individuals with special medical needs and their caregivers."
+      keywords="healthcare, AI, medical assistance, patient support, caregiver coordination, symptom monitoring"
+      canonical="/projects/geaux-health"
+      ogImage="/images/projects/geaux-health-og.jpg"
     >
       <AnimatedHero 
-        title="Geaux HelpED"
-        subtitle="Empowering students of all ages with personalized educational support"
-        primaryCta="Explore Resources"
+        title="Geaux Health"
+        subtitle="AI-Powered Healthcare Assistance for Personalized Medical Support"
+        primaryCta="Explore Features"
         primaryCtaLink="#features"
-        secondaryCta="Get Support"
+        secondaryCta="Get Started"
         secondaryCtaLink="#contact"
-        backgroundImage="/images/projects/geaux-helped-hero.jpg"
+        backgroundImage="/images/projects/geaux-health-hero.jpg"
       />
 
       <section className={styles.overview} id="overview">
@@ -111,19 +121,18 @@ const GeauxHelpEDPage = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className={styles.sectionTitle}>Supporting Educational Success</h2>
+            <h2 className={styles.sectionTitle}>Supporting Personalized Healthcare</h2>
             <div className={styles.overviewText}>
               <p>
-                Geaux HelpED is our comprehensive educational support platform designed to bridge learning gaps 
-                and enhance academic performance for students from elementary school through college.
-                Through personalized assistance, innovative learning tools, and accessible resources, we address 
-                the diverse needs of today's learners.
+                Geaux Health is our comprehensive healthcare assistance platform designed to provide personalized support 
+                for individuals with special medical needs and their caregivers. Through AI-powered features, we aim to 
+                enhance the quality of care, improve health outcomes, and simplify the management of medical conditions.
               </p>
               <p>
-                Our approach combines traditional educational methodologies with modern technology to create 
-                a supportive learning environment that adapts to individual student needs. Whether tackling 
-                challenging homework assignments, preparing for exams, or seeking to deepen understanding of 
-                specific subjects, Geaux HelpED provides the guidance students need to achieve their academic goals.
+                Our platform combines advanced technology with compassionate care to create a supportive environment 
+                that adapts to the unique needs of each patient. Whether managing chronic conditions, coordinating 
+                care among multiple providers, or ensuring medication adherence, Geaux Health offers the tools and 
+                resources needed to achieve optimal health and well-being.
               </p>
             </div>
           </motion.div>
@@ -138,9 +147,9 @@ const GeauxHelpEDPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className={styles.sectionTitle}>Our Resources</h2>
+            <h2 className={styles.sectionTitle}>Our Features</h2>
             <p className={styles.sectionSubtitle}>
-              Discover the educational tools and support systems that help students excel
+              Discover the AI-powered tools and resources that support personalized healthcare
             </p>
             
             <motion.div 
@@ -178,10 +187,10 @@ const GeauxHelpEDPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className={styles.sectionTitle}>The Impact of Educational Support</h2>
+              <h2 className={styles.sectionTitle}>The Impact of Personalized Healthcare</h2>
               <p className={styles.benefitsIntro}>
-                At Geaux HelpED, we believe that every student deserves the opportunity to reach their full potential.
-                Our proven approach to educational support delivers measurable results:
+                At Geaux Health, we believe that personalized healthcare can transform lives. Our platform delivers 
+                measurable benefits that enhance the quality of care and improve health outcomes:
               </p>
               
               <ul className={styles.benefitsList}>
@@ -208,7 +217,7 @@ const GeauxHelpEDPage = () => {
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
                 <a href="#contact" className={styles.ctaButton}>
-                  Start Learning
+                  Start Your Journey
                 </a>
               </motion.div>
             </motion.div>
@@ -252,41 +261,39 @@ const GeauxHelpEDPage = () => {
           >
             <div className={styles.caseStudyContent}>
               <h2 className={styles.caseStudyTitle}>Success Story</h2>
-              <h3 className={styles.caseStudySubtitle}>Riverside School District</h3>
+              <h3 className={styles.caseStudySubtitle}>Smith Family</h3>
               
               <p className={styles.caseStudyText}>
-                When Riverside School District implemented Geaux HelpED as a supplementary resource for their students, 
-                they were facing challenges with varied learning levels and limited teacher capacity to provide 
-                individualized attention. After six months of implementation, they saw remarkable improvements in 
-                student performance and engagement.
+                When the Smith family started using Geaux Health to manage their son's chronic condition, they were 
+                struggling to keep track of medications, appointments, and symptom changes. Within a few months, 
+                they experienced significant improvements in their son's health and overall family well-being.
               </p>
               
               <blockquote className={styles.caseStudyQuote}>
-                "Geaux HelpED has been transformative for our district. Students who previously struggled are now 
-                actively participating and showing significant improvement. The platform's ability to personalize 
-                learning while aligning with our curriculum standards has made it an invaluable resource for both 
-                our teachers and students."
+                "Geaux Health has been a game-changer for our family. The AI-powered reminders and personalized care 
+                plans have made it so much easier to manage our son's condition. We feel more in control and confident 
+                in his care, and the support from the platform has been invaluable."
               </blockquote>
               
               <p className={styles.caseStudyAuthor}>
-                — Dr. Sarah Martinez, Curriculum Director, Riverside School District
+                — Jane Smith, Mother and Caregiver
               </p>
             </div>
             
             <div className={styles.caseStudyResults}>
               <div className={styles.resultCard}>
-                <h4 className={styles.resultValue}>32%</h4>
-                <p className={styles.resultLabel}>Increase in math proficiency</p>
+                <h4 className={styles.resultValue}>50%</h4>
+                <p className={styles.resultLabel}>Reduction in hospital visits</p>
               </div>
               
               <div className={styles.resultCard}>
-                <h4 className={styles.resultValue}>27%</h4>
-                <p className={styles.resultLabel}>Improvement in reading scores</p>
+                <h4 className={styles.resultValue}>75%</h4>
+                <p className={styles.resultLabel}>Increase in medication adherence</p>
               </div>
               
               <div className={styles.resultCard}>
-                <h4 className={styles.resultValue}>94%</h4>
-                <p className={styles.resultLabel}>Teacher satisfaction rate</p>
+                <h4 className={styles.resultValue}>90%</h4>
+                <p className={styles.resultLabel}>Caregiver satisfaction rate</p>
               </div>
             </div>
           </motion.div>
@@ -302,14 +309,14 @@ const GeauxHelpEDPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h2 className={styles.contactTitle}>Ready to Boost Academic Performance?</h2>
+            <h2 className={styles.contactTitle}>Ready to Enhance Your Healthcare Experience?</h2>
             <p className={styles.contactText}>
-              Whether you're a parent seeking support for your child, a school administrator looking to enhance your 
-              educational resources, or a college student needing additional assistance, we have tailored solutions to meet your needs.
+              Whether you're managing a chronic condition, coordinating care for a loved one, or seeking to improve 
+              your overall health, Geaux Health offers the tools and support you need. Start your journey with us today.
             </p>
             <div className={styles.contactButtons}>
               <motion.a 
-                href="/contact?project=geaux-helped" 
+                href="/contact?project=geaux-health" 
                 className={`${styles.contactButton} ${styles.primaryButton}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -317,7 +324,7 @@ const GeauxHelpEDPage = () => {
                 Get Started
               </motion.a>
               <motion.a 
-                href="https://demo.geauxhelped.com" 
+                href="https://demo.geauxhealth.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className={`${styles.contactButton} ${styles.secondaryButton}`}
@@ -334,4 +341,4 @@ const GeauxHelpEDPage = () => {
   );
 };
 
-export default GeauxHelpEDPage;
+export default GeauxHealthPage;

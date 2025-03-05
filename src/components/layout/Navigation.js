@@ -1,4 +1,3 @@
-// components/layout/Navigation.js
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -114,11 +113,11 @@ const Navigation = () => {
                 </li>
                 <li role="none">
                   <Link 
-                    href="/projects/geaux-helped" 
-                    className={isActive('/projects/geaux-helped')}
+                    href="/projects/geaux-health" 
+                    className={isActive('/projects/geaux-health')}
                     role="menuitem"
                   >
-                    Geaux HelpED
+                    Geaux Health
                   </Link>
                 </li>
                 <li role="none">

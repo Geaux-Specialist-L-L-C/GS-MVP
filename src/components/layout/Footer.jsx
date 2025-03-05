@@ -70,7 +70,7 @@ const Footer = () => {
               <h4>Projects</h4>
               <ul aria-label="Our projects">
                 <li><Link href="/projects/geaux-academy">Geaux Academy</Link></li>
-                <li><Link href="/projects/geaux-helped">Geaux HelpED</Link></li>
+                <li><Link href="/projects/geaux-health">Geaux Health</Link></li>
                 <li><Link href="/projects/reanimated-echos">ReanimatED Echos</Link></li>
                 <li><Link href="/projects/geaux-emporium">Geaux Emporium</Link></li>
               </ul>
