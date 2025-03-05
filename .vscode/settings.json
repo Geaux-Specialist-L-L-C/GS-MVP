@@ -1,0 +1,8 @@
+{
+    "html.trace.server": "verbose",
+    "workbench.externalBrowser": "firefox",
+    "debug.javascript.defaultRuntimeExecutable": {
+        
+        "pwa-node": "node"
+    }
+}
