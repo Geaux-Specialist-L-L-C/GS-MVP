@@ -23,7 +23,7 @@ a
 
 GeauxSpecialist.com serves as the central hub for Geaux Specialist LLC, showcasing the company's various projects:
 - Geaux Academy (education platform)
-- Geaux HelpED (healthcare management)
+- Geaux Health (AI-powered healthcare assistance)
 - ReanimatED Echos (voice processing technology)
 - Geaux Emporium (e-commerce for educational resources)
 
@@ -99,7 +99,7 @@ geauxspecialist/
 ├── pages/               # Next.js pages
 │   ├── projects/        # Project-specific pages
 │   │   ├── geaux-academy.js
-│   │   ├── geaux-helped.js
+│   │   ├── geaux-health.js
 │   │   ├── reanimated-echos.js
 │   │   └── geaux-emporium.js
 │   ├── _app.js          # Custom App component
